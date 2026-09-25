@@ -37,7 +37,7 @@ export default function Footer() {
         <div>
           <img src={logo} alt={`${COMPANY_NAME} MS Consultant`} className="logo-img footer-logo" />
           <p className="muted">
-            An edtech company built around Play School franchise, study
+            A Ms Consultant company built around Play School franchise, study
             material & test software, marketing, and HR services.
           </p>
         </div>
