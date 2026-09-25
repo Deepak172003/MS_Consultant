@@ -15,7 +15,7 @@ import "./App.css";
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/MS_Consultant">
       <ScrollToTop />
       <Layout>
         <Routes>
