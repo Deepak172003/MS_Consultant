@@ -1,9 +1,9 @@
 // Central place to edit numbers, emails, links and content used across the
 // whole site. Change something once here and every page updates.
 
-export const COMPANY_NAME = "Guruzan";
-export const COMPANY_FULL_NAME = "Guruzan — MS Consultant Pvt. Ltd.";
-export const TAGLINE = "An edtech company built around four things brands and families actually need.";
+export const COMPANY_NAME = "Ms Consultant";
+export const COMPANY_FULL_NAME = "MS Consultant Pvt. Ltd.";
+export const TAGLINE = "A Ms Consultant company built around four things brands and families actually need.";
 
 export const WHATSAPP_NUMBER = "917004237947"; // country code + number, no + or spaces
 export const OFFICE_PHONE = "+91 6542-452447";
