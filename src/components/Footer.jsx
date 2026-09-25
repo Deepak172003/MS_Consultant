@@ -79,6 +79,8 @@ export default function Footer() {
       </div>
       <div className="wrap copyright">
         © {new Date().getFullYear()} {COMPANY_NAME}. All rights reserved.
+        Designed and developed by <a href="https://www.orbitodigitalmedia.com/" target="_blank" rel="noopener noreferrer">Orbitodigital Media</a>.
+        
       </div>
     </footer>
   );
