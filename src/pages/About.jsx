@@ -19,9 +19,9 @@ export default function About() {
       <section className="page-hero">
         <div className="wrap">
           <div className="eyebrow">Since 2019</div>
-          <h1>One edtech company, four ways we help</h1>
+          <h1>One Ms Consultant company, four ways we help</h1>
           <p>
-            {COMPANY_NAME} is a Ms Consultant company covering Play School
+            {COMPANY_NAME} is a company covering Play School
             franchise, study material & test software, marketing, and HR
             services — based in Bokaro (Head Office) & Ranchi.
           </p>
