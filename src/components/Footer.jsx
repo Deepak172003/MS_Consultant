@@ -37,7 +37,7 @@ export default function Footer() {
         <div>
           <img src={logo} alt={`${COMPANY_NAME} MS Consultant`} className="logo-img footer-logo" />
           <p className="muted">
-            A consulting company built around Play School franchise, study
+            An edtech company built around Play School franchise, study
             material & test software, marketing, and HR services.
           </p>
         </div>
@@ -79,7 +79,6 @@ export default function Footer() {
       </div>
       <div className="wrap copyright">
         © {new Date().getFullYear()} {COMPANY_NAME}. All rights reserved.
-        Designed & built by <a href="https://orbitodigitalmedia.com" target="_blank" rel="noopener noreferrer">Orbito Digital Media</a>.
       </div>
     </footer>
   );

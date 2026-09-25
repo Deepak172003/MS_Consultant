@@ -68,7 +68,7 @@ export default function Home() {
           <div className="banner-text">
             <div className="eyebrow">{COMPANY_NAME} · Est. 2019</div>
             <h1>
-              A Consulting company built around <em>four</em> things you need
+              An edtech company built around <em>four</em> things you need
             </h1>
             <p>
               Play school franchise, study material & test software,

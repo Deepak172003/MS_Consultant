@@ -19,9 +19,9 @@ export default function About() {
       <section className="page-hero">
         <div className="wrap">
           <div className="eyebrow">Since 2019</div>
-          <h1>One consulting company, four ways we help</h1>
+          <h1>One edtech company, four ways we help</h1>
           <p>
-            {COMPANY_NAME} is a consulting company covering Play School
+            {COMPANY_NAME} is an edtech company covering Play School
             franchise, study material & test software, marketing, and HR
             services — based in Bokaro (Head Office) & Ranchi.
           </p>
@@ -73,6 +73,7 @@ export default function About() {
           </div>
         </div>
       </section>
+
       <section>
         <div className="wrap cta-band">
           <h2>Visit or message us</h2>

@@ -4,9 +4,11 @@ import WhatsAppCTA from "./WhatsAppCTA";
 import logo from "../assets/mslogo_ms_only.webp";
 import { COMPANY_NAME } from "../data/constants";
 
-// Kept short and to the point — the four verticals plus About and Contact.
-// Everything (including these) is also listed in the footer and the mobile menu.
+// Kept short and to the point — the four verticals plus Home, About and
+// Contact. Everything (including these) is also listed in the footer and
+// the mobile menu.
 const primaryLinks = [
+  { to: "/", label: "Home" },
   { to: "/play-school", label: "Play School" },
   { to: "/study-material", label: "Study Material" },
   { to: "/marketing", label: "Marketing" },
@@ -18,7 +20,6 @@ const primaryLinks = [
 // Full list for the mobile menu. Testimonials and FAQ live in the footer
 // and as sections on the Home page — not repeated in the nav/menu.
 const allLinks = [
-  { to: "/", label: "Home" },
   ...primaryLinks,
   { to: "/how-it-works", label: "How It Works" },
 ];
@@ -42,6 +43,7 @@ export default function Navbar() {
             <NavLink
               key={l.to}
               to={l.to}
+              end={l.to === "/"}
               className={({ isActive }) => (isActive ? "active" : "")}
             >
               {l.label}
@@ -73,6 +75,7 @@ export default function Navbar() {
               <NavLink
                 key={l.to}
                 to={l.to}
+                end={l.to === "/"}
                 className={({ isActive }) => (isActive ? "active" : "")}
               >
                 {l.label}

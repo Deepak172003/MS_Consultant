@@ -1,7 +1,7 @@
 // Central place to edit numbers, emails, links and content used across the
 // whole site. Change something once here and every page updates.
 
-export const COMPANY_NAME = "MS Consultant";
+export const COMPANY_NAME = "Guruzan";
 export const COMPANY_FULL_NAME = "Guruzan — MS Consultant Pvt. Ltd.";
 export const TAGLINE = "An edtech company built around four things brands and families actually need.";
 
@@ -10,7 +10,7 @@ export const OFFICE_PHONE = "+91 6542-452447";
 export const MOBILE_PHONES = ["+91 70042 37947", "+91 70047 04332"];
 export const EMAIL = "info@mscjobs.in";
 export const ADDRESS = "2nd Floor, Golden Palace, Bye Pass Road, Chas, Bokaro (JH)";
-export const OPENING_HOURS = "Mon–Sat, 10:00 AM – 6:00 PM"; // TODO: confirm real hours
+export const OPENING_HOURS = "Mon–Sat, 10:00 AM – 7:00 PM"; // TODO: confirm real hours
 
 // Office locations. Each needs its own "Get Directions" Google Maps link.
 export const OFFICES = [
@@ -24,10 +24,7 @@ export const OFFICES = [
     city: "Ranchi Office",
     address: "Navin Mantri Road, near Apna Mart, P&T Colony, Lalpur, Ranchi, Jharkhand 834001",
     mapLink:
-      "https://www.google.com/maps/dir//MS+CONSULTANT,+Navin+Mantri+Road,+near+Apna+Mart,+P%26T+Colony,+Lalpur,+Ranchi,+Jharkhand+834001/@23.3439232,85.3409792,19033m/data=!3m1!1e3!4m8!4m7!1m0!1m5!1m1!1s0x39f4e15d78bf52e9:0x832149d04d392552!2m2!1d85.3380932!2d23.3755609?entry=ttu&g_ep=EgoyMDI2MDkyMi4wIKXMDSoASAFQAw%3D%3D" +
-      encodeURIComponent(
-        "Navin Mantri Road, near Apna Mart, P&T Colony, Lalpur, Ranchi, Jharkhand 834001"
-      ),
+      "https://www.google.com/maps/dir//MS+CONSULTANT,+Navin+Mantri+Road,+near+Apna+Mart,+P%26T+Colony,+Lalpur,+Ranchi,+Jharkhand+834001/@23.3439232,85.3409792,19033m/data=!3m1!1e3!4m8!4m7!1m0!1m5!1m1!1s0x39f4e15d78bf52e9:0x832149d04d392552!2m2!1d85.3380932!2d23.3755609?entry=ttu&g_ep=EgoyMDI2MDkyMi4wIKXMDSoASAFQAw%3D%3D",
   },
 ];
 
@@ -39,7 +36,7 @@ export function waLink(message) {
 
 // ---------------------------------------------------------------------------
 // The four verticals. Each has its own page, its own nav entry, and its own
-// card on the Home page
+// card on the Home page. Edit copy here rather than inside each page file.
 // ---------------------------------------------------------------------------
 
 export const VERTICALS = [
@@ -115,8 +112,7 @@ export const HR_SERVICE_STREAMS = [
   { name: "NEET Faculty", desc: "Physics, Chemistry, Biology faculty" },
   { name: "Board Level Faculty", desc: "11th & 12th subject faculty" },
   { name: "Foundation Faculty", desc: "Classes 8th to 10th" },
-  { name: "Digital Marketing Faculty", desc: "Specialists in digital marketing strategies" }
-
+  { name: "Digital Marketing Faculty", desc: "Specialists in digital marketing strategies" },
 ];
 
 // NOTE: placeholder quotes — replace with real feedback before launch.
