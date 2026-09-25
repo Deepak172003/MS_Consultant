@@ -33,7 +33,7 @@ export default function About() {
           <div className="kicker">Our story</div>
           <p className="muted">
             {COMPANY_NAME} started as a faculty placement service and grew
-            into an edtech company as the same problem kept showing up in
+            into a MS Consultant company as the same problem kept showing up in
             different forms — institutes needed good teachers, good
             marketing, and reliable study material, and parents wanted a
             trustworthy early-education option. Rather than staying a single
