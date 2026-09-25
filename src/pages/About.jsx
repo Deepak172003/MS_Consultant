@@ -21,7 +21,7 @@ export default function About() {
           <div className="eyebrow">Since 2019</div>
           <h1>One edtech company, four ways we help</h1>
           <p>
-            {COMPANY_NAME} is an edtech company covering Play School
+            {COMPANY_NAME} is a Ms Consultant company covering Play School
             franchise, study material & test software, marketing, and HR
             services — based in Bokaro (Head Office) & Ranchi.
           </p>
@@ -33,7 +33,7 @@ export default function About() {
           <div className="kicker">Our story</div>
           <p className="muted">
             {COMPANY_NAME} started as a faculty placement service and grew
-            into a MS Consultant company as the same problem kept showing up in
+            into an edtech company as the same problem kept showing up in
             different forms — institutes needed good teachers, good
             marketing, and reliable study material, and parents wanted a
             trustworthy early-education option. Rather than staying a single
