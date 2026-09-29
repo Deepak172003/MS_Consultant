@@ -68,13 +68,16 @@ export default function About() {
           </div>
           <div className="grid-3">
             {team.map((m) => (
-              <div className="card" key={m.name}>
-                <h3>{m.name}</h3>
-                <p className="muted">{m.role}</p>
-              </div>
-            ))}
-          </div>
-        </div>
+  <div 
+    className="card" 
+    key={m.name} 
+    style={{ border: "1px solid #ccc", padding: "1rem", margin: "1rem", borderRadius: "8px" }}
+  >
+    <h3>{m.name}</h3>
+    <p className="muted">{m.role}</p>
+  </div>
+))}
+   </div>
       </section>
 
       <section>
