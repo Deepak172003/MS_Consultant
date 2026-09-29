@@ -2,12 +2,12 @@ import { Link } from "react-router-dom";
 import WhatsAppCTA from "../components/WhatsAppCTA";
 import { ADDRESS, COMPANY_NAME, VERTICALS } from "../data/constants";
 
+// Drop real photos into public/images/team/ (e.g. public/images/team/krishna.jpg)
+// and reference them here as "images/team/krishna.jpg" — no leading slash.
+// BASE_URL is prefixed below so this also works once deployed under
+// /MS_Consultant/ on GitHub Pages, not just in local dev.
 const team = [
-  { 
-    name: "Krishna Kr. Barnwal", 
-    role: "Founder & Chairman", 
-    img: "/images/team/krishna.jpg" 
-  },
+  { name: "Krishna Kr. Barnwal", role: "Founder & Chairman", img: "images/team/krishna.jpg" },
   { name: "Rajesh Kr. Pandit", role: "Sr. Manager" },
   { name: "Priyanka Rajput", role: "Jr. Manager" },
   { name: "Dolly Kumari", role: "Jr. Manager" },
@@ -16,6 +16,15 @@ const team = [
   { name: "Komal Kumari", role: "Recruiter" },
   { name: "Shivan Kumar", role: "Digital Marketing Specialist" },
 ];
+
+function initials(name) {
+  return name
+    .split(" ")
+    .filter((w) => /^[A-Za-z]/.test(w))
+    .slice(0, 2)
+    .map((w) => w[0].toUpperCase())
+    .join("");
+}
 
 export default function About() {
   return (
@@ -69,18 +78,17 @@ export default function About() {
           </div>
           <div className="grid-3">
             {team.map((m) => (
-              <div 
-                className="card" 
-                key={m.name} 
-                style={{ border: "1px solid #ccc", padding: "1rem", margin: "1rem", borderRadius: "8px" }}
-              >
-                {/* Dynamically checks for an image and scales it nicely into the card */}
-                {m.img && (
-                  <img 
-                    src={m.img} 
-                    alt={m.name} 
-                    style={{ width: "100%", height: "auto", borderRadius: "4px", marginBottom: "0.75rem", display: "block" }} 
+              <div className="card team-card" key={m.name}>
+                {m.img ? (
+                  <img
+                    src={`${import.meta.env.BASE_URL}${m.img}`}
+                    alt={m.name}
+                    className="team-photo"
                   />
+                ) : (
+                  <div className="team-photo team-photo-fallback" aria-hidden="true">
+                    {initials(m.name)}
+                  </div>
                 )}
                 <h3>{m.name}</h3>
                 <p className="muted">{m.role}</p>
