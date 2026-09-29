@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import WhatsAppCTA from "../components/WhatsAppCTA";
 import { ADDRESS, COMPANY_NAME, VERTICALS } from "../data/constants";
+
 const team = [
   { 
     name: "Krishna Kr. Barnwal", 
@@ -68,16 +69,25 @@ export default function About() {
           </div>
           <div className="grid-3">
             {team.map((m) => (
-  <div 
-    className="card" 
-    key={m.name} 
-    style={{ border: "1px solid #ccc", padding: "1rem", margin: "1rem", borderRadius: "8px" }}
-  >
-    <h3>{m.name}</h3>
-    <p className="muted">{m.role}</p>
-  </div>
-))}
-   </div>
+              <div 
+                className="card" 
+                key={m.name} 
+                style={{ border: "1px solid #ccc", padding: "1rem", margin: "1rem", borderRadius: "8px" }}
+              >
+                {/* Dynamically checks for an image and scales it nicely into the card */}
+                {m.img && (
+                  <img 
+                    src={m.img} 
+                    alt={m.name} 
+                    style={{ width: "100%", height: "auto", borderRadius: "4px", marginBottom: "0.75rem", display: "block" }} 
+                  />
+                )}
+                <h3>{m.name}</h3>
+                <p className="muted">{m.role}</p>
+              </div>
+            ))}
+          </div>
+        </div>
       </section>
 
       <section>
