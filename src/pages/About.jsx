@@ -1,9 +1,21 @@
 import { Link } from "react-router-dom";
 import WhatsAppCTA from "../components/WhatsAppCTA";
 import { ADDRESS, COMPANY_NAME, VERTICALS } from "../data/constants";
+<style>
+  .card {
+    border: 1px solid #ccc;
+    padding: 1rem;
+    margin: 1rem;
+  }
+</style>
 
 const team = [
-  { name: "Krishna Kr. Barnwal", role: "Founder & Chairman" },
+  <div className="card">
+    <img src="/images/team/krishna.jpg" alt="Krishna Kr. Barnwal" />
+    <h3>Krishna Kr. Barnwal</h3>
+    <p className="muted">Founder & Chairman</p>
+  </div>
+  </div>
   { name: "Rajesh Kr. Pandit", role: "Sr. Manager" },
   { name: "Priyanka Rajput", role: "Jr. Manager" },
   { name: "Dolly Kumari", role: "Jr. Manager" },
