@@ -27,13 +27,22 @@ const allLinks = [
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
+
+  // Soft shadow under the header once the page has been scrolled a little.
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   // Close the mobile menu whenever the route changes.
   useEffect(() => setOpen(false), [location.pathname]);
 
   return (
-    <header className="site-header">
+    <header className={`site-header${scrolled ? " scrolled" : ""}`}>
       <nav className="wrap navbar">
         <NavLink to="/" className="brand">
           <img src={logo} alt="Guruzan MS Consultant" className="logo-img" />
@@ -57,7 +66,7 @@ export default function Navbar() {
             Chat on WhatsApp
           </WhatsAppCTA>
           <button
-            className="hamburger"
+            className={`hamburger${open ? " is-open" : ""}`}
             aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
             onClick={() => setOpen(!open)}
