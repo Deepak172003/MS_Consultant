@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import WhatsAppCTA from "../components/WhatsAppCTA";
+import CountUp from "../components/CountUp";
 import {
   TESTIMONIALS,
   FAQS,
@@ -96,16 +97,20 @@ export default function Home() {
 
           <div className="banner-graphic" aria-hidden="true">
             <svg viewBox="0 0 320 320" fill="none">
-              <circle cx="160" cy="160" r="150" stroke="#E8E1C8" strokeWidth="1.5" />
+              <circle className="ring-spin" cx="160" cy="160" r="150" stroke="#D9CFA8" strokeWidth="1.5" strokeDasharray="3 9" />
               <circle cx="160" cy="160" r="105" stroke="#E8E1C8" strokeWidth="1.5" />
-              <rect x="70" y="150" width="70" height="90" rx="10" fill="#FFFFFF" stroke="#4C8CE8" strokeWidth="1.5" />
-              <rect x="90" y="170" width="30" height="6" rx="3" fill="#4C8CE8" />
-              <rect x="90" y="184" width="30" height="6" rx="3" fill="#E8E1C8" />
-              <rect x="90" y="198" width="18" height="6" rx="3" fill="#E8E1C8" />
-              <rect x="175" y="110" width="80" height="100" rx="10" fill="#FFFFFF" stroke="#E8B34C" strokeWidth="1.5" />
-              <circle cx="215" cy="140" r="16" fill="#E8B34C" opacity=".18" />
-              <path d="M195 175l14-16 12 10 20-24" stroke="#E8B34C" strokeWidth="2.5" fill="none" strokeLinecap="round" strokeLinejoin="round" />
-              <circle cx="235" cy="145" r="4" fill="#E8B34C" />
+              <g className="float-a">
+                <rect x="70" y="150" width="70" height="90" rx="10" fill="#FFFFFF" stroke="#4C8CE8" strokeWidth="1.5" />
+                <rect x="90" y="170" width="30" height="6" rx="3" fill="#4C8CE8" />
+                <rect x="90" y="184" width="30" height="6" rx="3" fill="#E8E1C8" />
+                <rect x="90" y="198" width="18" height="6" rx="3" fill="#E8E1C8" />
+              </g>
+              <g className="float-b">
+                <rect x="175" y="110" width="80" height="100" rx="10" fill="#FFFFFF" stroke="#E8B34C" strokeWidth="1.5" />
+                <circle cx="215" cy="140" r="16" fill="#E8B34C" opacity=".18" />
+                <path className="chart-line" pathLength="100" d="M195 175l14-16 12 10 20-24" stroke="#E8B34C" strokeWidth="2.5" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+                <circle className="dot-pulse" cx="235" cy="145" r="4" fill="#E8B34C" />
+              </g>
             </svg>
           </div>
         </div>
@@ -114,10 +119,10 @@ export default function Home() {
       {/* Stats strip */}
       <div className="stats">
         <div className="wrap stat-grid">
-          <div><div className="num">24k+</div><div className="lbl">People placed</div></div>
-          <div><div className="num">6+</div><div className="lbl">Years in marketing</div></div>
-          <div><div className="num">60+</div><div className="lbl">Cities covered</div></div>
-          <div><div className="num">2019</div><div className="lbl">Operating since</div></div>
+          <div><div className="num"><CountUp value="24k+" /></div><div className="lbl">People placed</div></div>
+          <div><div className="num"><CountUp value="6+" /></div><div className="lbl">Years in marketing</div></div>
+          <div><div className="num"><CountUp value="60+" /></div><div className="lbl">Cities covered</div></div>
+          <div><div className="num"><CountUp value="2019" /></div><div className="lbl">Operating since</div></div>
         </div>
       </div>
 
