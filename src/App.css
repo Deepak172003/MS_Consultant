@@ -134,6 +134,20 @@ section { padding: 60px 0; }
 .card .btn { margin-top: 14px; }
 .panel-card h2 { font-size: 1.3rem; font-weight: 800; margin-bottom: 12px; }
 
+/* Team member photo / initials fallback — square, consistent size whether
+   or not a real photo is set yet. */
+.team-photo {
+  width: 100%; aspect-ratio: 1 / 1; object-fit: cover;
+  border-radius: 10px; margin-bottom: 14px; display: block;
+  background: rgba(27,35,64,.05);
+}
+.team-photo-fallback {
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Sora', sans-serif; font-weight: 800; font-size: 1.8rem;
+  color: var(--accent2); background: rgba(76,140,232,.10);
+  border: 1px solid var(--line);
+}
+
 .chip-list { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0; }
 .chip-list li {
   background: rgba(27,35,64,.05); border: 1px solid var(--line);
