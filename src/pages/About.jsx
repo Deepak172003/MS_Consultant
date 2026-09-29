@@ -15,7 +15,6 @@ const team = [
     <h3>Krishna Kr. Barnwal</h3>
     <p className="muted">Founder & Chairman</p>
   </div>
-  </div>
   { name: "Rajesh Kr. Pandit", role: "Sr. Manager" },
   { name: "Priyanka Rajput", role: "Jr. Manager" },
   { name: "Dolly Kumari", role: "Jr. Manager" },
