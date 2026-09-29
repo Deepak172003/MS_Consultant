@@ -238,3 +238,118 @@ section { padding: 60px 0; }
 /* Inline links inside body copy */
 .panel-card p a { color: var(--accent2); font-weight: 600; }
 .panel-card p a:hover { text-decoration: underline; }
+
+/* =====================================================================
+   Animations
+   All motion is switched off for people who set "reduce motion" (bottom).
+   ===================================================================== */
+
+/* --- Page change: gentle fade on every route --- */
+.page-enter { animation: pageIn .35s ease backwards; }
+@keyframes pageIn { from { opacity: 0; } to { opacity: 1; } }
+
+/* --- Hero entrance: pieces rise in one after another --- */
+.banner-text > *, .page-hero .wrap > * {
+  animation: fadeUp .75s cubic-bezier(.2,.7,.2,1) backwards;
+}
+.banner-text > :nth-child(1), .page-hero .wrap > :nth-child(1) { animation-delay: .05s; }
+.banner-text > :nth-child(2), .page-hero .wrap > :nth-child(2) { animation-delay: .15s; }
+.banner-text > :nth-child(3), .page-hero .wrap > :nth-child(3) { animation-delay: .27s; }
+.banner-text > :nth-child(4), .page-hero .wrap > :nth-child(4) { animation-delay: .39s; }
+.banner-text > :nth-child(n+5), .page-hero .wrap > :nth-child(n+5) { animation-delay: .5s; }
+.banner-graphic { animation: fadeIn 1s .3s ease backwards; }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: none; } }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+/* Shimmer across the highlighted word in hero headlines */
+.banner h1 em, .page-hero h1 em {
+  background: linear-gradient(100deg, var(--accent) 0%, #F8DE9A 50%, var(--accent) 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; color: transparent;
+  animation: shine 5s linear infinite;
+}
+@keyframes shine { to { background-position: 200% center; } }
+
+/* --- Banner graphic: floating cards, slow ring, drawing chart line --- */
+.float-a { animation: floatY 6s ease-in-out infinite; }
+.float-b { animation: floatY 7s ease-in-out -2.5s infinite reverse; }
+@keyframes floatY { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-9px); } }
+.ring-spin { transform-box: fill-box; transform-origin: center; animation: spin 90s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.chart-line { stroke-dasharray: 100; stroke-dashoffset: 100; animation: drawLine 1.4s .9s ease forwards; }
+@keyframes drawLine { to { stroke-dashoffset: 0; } }
+.dot-pulse { transform-box: fill-box; transform-origin: center; animation: dotPulse 2s ease-in-out infinite; }
+@keyframes dotPulse { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.7); opacity: .55; } }
+.banner-glow-1 { animation: drift 16s ease-in-out infinite alternate; }
+.banner-glow-2 { animation: drift 20s ease-in-out infinite alternate-reverse; }
+@keyframes drift { to { transform: translate(-28px, 22px) scale(1.08); } }
+
+/* --- Scroll reveal (classes are added by RevealOnScroll.jsx) --- */
+/* `main .reveal` is deliberately more specific than `.card { transition }` below,
+   otherwise the card rule would swallow the fade and cards would just pop in. */
+main .reveal {
+  opacity: 0; transform: translateY(26px);
+  transition: opacity .6s cubic-bezier(.2,.7,.2,1), transform .6s cubic-bezier(.2,.7,.2,1);
+}
+main .reveal.is-visible { opacity: 1; transform: none; }
+
+/* --- Hover feedback --- */
+.card, .step, .grid-2x2 > .panel-card {
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+.card:hover, .step:hover, .grid-2x2 > .panel-card:hover {
+  transform: translateY(-5px); border-color: var(--accent);
+  box-shadow: 0 16px 32px rgba(27,35,64,.10);
+}
+.step-num { display: inline-block; transition: transform .25s ease; }
+.step:hover .step-num { transform: scale(1.15); }
+.chip-list li { transition: transform .2s ease, border-color .2s ease, color .2s ease; }
+.chip-list li:hover { transform: translateY(-2px); border-color: var(--accent2); color: var(--text); }
+
+.btn { transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease, color .2s ease; }
+.btn:hover { transform: translateY(-2px); }
+.btn:active { transform: translateY(0) scale(.97); }
+.btn-primary:hover { box-shadow: 0 10px 22px rgba(232,179,76,.5); }
+.btn-ghost:hover { border-color: var(--accent2); color: var(--accent2); }
+
+/* Nav links: underline slides in on hover / current page */
+.navlinks a { position: relative; padding: 4px 0; transition: color .2s ease; }
+.navlinks a::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: -3px; height: 2px; border-radius: 2px;
+  background: var(--accent); transform: scaleX(0); transform-origin: left; transition: transform .28s ease;
+}
+.navlinks a:hover::after, .navlinks a.active::after { transform: scaleX(1); }
+.footer-links a { display: inline-block; transition: color .2s ease, transform .2s ease; }
+.footer-links a:hover { transform: translateX(3px); }
+
+/* Header: shadow appears once you scroll */
+.site-header { transition: box-shadow .25s ease; }
+.site-header.scrolled { box-shadow: 0 8px 26px rgba(27,35,64,.08); }
+
+/* Hamburger morphs into an X */
+.hamburger span { transition: transform .25s ease, opacity .2s ease; }
+.hamburger.is-open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.is-open span:nth-child(2) { opacity: 0; }
+.hamburger.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* FAQ answers ease open */
+.faq-a { animation: faqOpen .28s ease; }
+@keyframes faqOpen { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
+
+/* WhatsApp button: soft pulse to draw the eye */
+.wa-float::before {
+  content: ""; position: absolute; inset: 0; border-radius: 50%; background: #25D366;
+  z-index: -1; animation: waPulse 2.6s ease-out infinite;
+}
+.wa-float { transition: transform .2s ease; }
+.wa-float:hover { transform: scale(1.08); }
+@keyframes waPulse { 0% { transform: scale(1); opacity: .55; } 70%, 100% { transform: scale(1.75); opacity: 0; } }
+
+/* --- Respect "reduce motion" system setting --- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .001ms !important; animation-iteration-count: 1 !important;
+    transition-duration: .001ms !important; scroll-behavior: auto !important;
+  }
+}
