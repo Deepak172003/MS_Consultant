@@ -17,6 +17,7 @@ const quickLinksB = [
   { to: "/testimonials", label: "Testimonials" },
   { to: "/faq", label: "FAQ" },
   { to: "/contact", label: "Contact" },
+  { to: "/refund-policy", label: "Refund Policy" },
 ];
 
 function LinkList({ links }) {
