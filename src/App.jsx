@@ -11,6 +11,7 @@ import HowItWorks from "./pages/HowItWorks";
 import About from "./pages/About";
 import Testimonials from "./pages/Testimonials";
 import FAQ from "./pages/FAQ";
+import RefundPolicy from "./pages/RefundPolicy";
 import Contact from "./pages/Contact";
 import "./App.css";
 
@@ -30,6 +31,7 @@ export default function App() {
           <Route path="/about" element={<About />} />
           <Route path="/testimonials" element={<Testimonials />} />
           <Route path="/faq" element={<FAQ />} />
+          <Route path="/refund-policy" element={<RefundPolicy />} />
           <Route path="/contact" element={<Contact />} />
         </Routes>
       </Layout>
