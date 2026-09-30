@@ -71,7 +71,6 @@ export const STUDY_MATERIAL_STREAMS = [
   { name: "NEET", desc: "Physics, Chemistry, Biology study material & tests" },
   { name: "Board Level", desc: "11th & 12th study material & tests" },
   { name: "Foundation", desc: "Classes 8th to 10th study material & tests" },
-  { name: "Higher Studies", desc: "Engineering, graduation, medical, B.Ed, M.Sc" },
   { name: "Olympiad / NDA", desc: "Science, Maths, GK, GS" },
 ];
 
@@ -113,7 +112,6 @@ export const HR_SERVICE_STREAMS = [
   { name: "NEET Faculty", desc: "Physics, Chemistry, Biology faculty" },
   { name: "Board Level Faculty", desc: "11th & 12th subject faculty" },
   { name: "Foundation Faculty", desc: "Classes 8th to 10th" },
-  { name: "Digital Marketing Faculty", desc: "Specialists in digital marketing strategies" },
 ];
 
 // Business Consulting — "zero se profitable". Service list is a sensible
