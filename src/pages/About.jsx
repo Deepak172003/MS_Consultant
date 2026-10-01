@@ -3,7 +3,7 @@ import WhatsAppCTA from "../components/WhatsAppCTA";
 import { ADDRESS, COMPANY_NAME, VERTICALS } from "../data/constants";
 
 // Auto-load every image from src/assets/team (Vite)
-const teamImages = import.meta.glob("/src/assets/team/*.{webp,WEBP,jpg,JPG,jpeg,JPEG,png,PNG}", {
+const teamImages = import.meta.glob("/src/assets/Team/*.{webp,WEBP,jpg,JPG,jpeg,JPEG,png,PNG}", {
   eager: true,
   import: "default",
 });
