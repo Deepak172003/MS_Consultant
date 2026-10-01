@@ -12,6 +12,7 @@ import About from "./pages/About";
 import Testimonials from "./pages/Testimonials";
 import FAQ from "./pages/FAQ";
 import RefundPolicy from "./pages/RefundPolicy";
+import Pricing from "./pages/Pricing";
 import Contact from "./pages/Contact";
 import "./App.css";
 
@@ -32,6 +33,7 @@ export default function App() {
           <Route path="/testimonials" element={<Testimonials />} />
           <Route path="/faq" element={<FAQ />} />
           <Route path="/refund-policy" element={<RefundPolicy />} />
+          <Route path="/pricing" element={<Pricing />} />
           <Route path="/contact" element={<Contact />} />
         </Routes>
       </Layout>
