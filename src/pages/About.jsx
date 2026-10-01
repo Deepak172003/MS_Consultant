@@ -20,9 +20,7 @@ const team = [
     name: "Rajesh Kr. Pandit",
     role: "Sr. Manager",
     photo: "rajesh-pandit.webp",
-    linkedin: "Rajesh Pandit 
-Linkedin id
-https://www.linkedin.com/in/rajesh-pandit-2b3b86283?utm_source=share_via&utm_content=profile&utm_medium=member_android",
+    linkedin:"https://www.linkedin.com/in/rajesh-pandit-2b3b86283",
   },
   {
     name: "Priyanka Rajput",
