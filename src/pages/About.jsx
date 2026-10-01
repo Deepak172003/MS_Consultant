@@ -64,6 +64,7 @@ function initials(name) {
 }
 
 const isValidLinkedIn = (url) => url && !url.includes("REPLACE-ID");
+console.log(Object.keys(teamImages));
 
 export default function About() {
   return (
