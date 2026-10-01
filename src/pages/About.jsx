@@ -3,11 +3,19 @@ import WhatsAppCTA from "../components/WhatsAppCTA";
 import { ADDRESS, COMPANY_NAME, VERTICALS } from "../data/constants";
 
 // Auto-load every image from src/assets/team (Vite)
-const teamImages = import.meta.glob("/src/assets/team/*.{webp,jpg,jpeg,png}", {
+const teamImages = import.meta.glob("/src/assets/team/*.{webp,WEBP,jpg,JPG,jpeg,JPEG,png,PNG}", {
   eager: true,
   import: "default",
 });
-const getPhoto = (file) => (file ? teamImages[`/src/assets/team/${file}`] : undefined);
+
+const imageMap = Object.fromEntries(
+  Object.entries(teamImages).map(([path, url]) => [
+    decodeURIComponent(path.split("/").pop()).toLowerCase(),
+    url,
+  ])
+);
+
+const getPhoto = (file) => (file ? imageMap[file.toLowerCase()] : undefined);
 
 const team = [
   {
