@@ -19,13 +19,13 @@ const team = [
   {
     name: "Rajesh Kr. Pandit",
     role: "Sr. Manager",
-    photo: "rejesh-edited.webp",
+    photo: "",
     linkedin:"https://www.linkedin.com/in/rajesh-pandit-2b3b86283",
   },
   {
     name: "Priyanka Rajput",
     role: "Sales Manager ",
-    photo: "Priyanka Sales-.webp",
+    photo: "Priyanka Sales.webp",
     linkedin: "https://www.linkedin.com/in/priyanka-rajput-31a621296",
   },
   {
