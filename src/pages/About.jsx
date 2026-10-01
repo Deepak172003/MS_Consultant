@@ -1,14 +1,15 @@
 import { Link } from "react-router-dom";
 import WhatsAppCTA from "../components/WhatsAppCTA";
 import { ADDRESS, COMPANY_NAME, VERTICALS } from "../data/constants";
-import krishnaImg from "../assets/Krishana.webp";
+import krishnaImg from "../assets/Krishana.webp"; // your founder photo
 
-// Drop real photos into public/images/team/ (e.g. public/images/team/krishna.jpg)
-// and reference them here as "images/team/krishna.jpg" — no leading slash.
-// BASE_URL is prefixed below so this also works once deployed under
-// /MS_Consultant/ on GitHub Pages, not just in local dev.
 const team = [
-  { name: "Krishna Kr. Barnwal", role: "Founder & Chairman",img: krishnaImg},
+  {
+    name: "Krishna Kr. Barnwal",
+    role: "Founder & Chairman",
+    img: krishnaImg,
+    linkedin: "https://www.linkedin.com/in/krishna-kumar-barnwal-350124193"
+  },
   { name: "Rajesh Kr. Pandit", role: "Sr. Manager" },
   { name: "Priyanka Rajput", role: "Jr. Manager" },
   { name: "Dolly Kumari", role: "Jr. Manager" },
@@ -20,11 +21,11 @@ const team = [
 
 function initials(name) {
   return name
-    .split(" ")
-    .filter((w) => /^[A-Za-z]/.test(w))
-    .slice(0, 2)
-    .map((w) => w[0].toUpperCase())
-    .join("");
+   .split(" ")
+   .filter((w) => /^[A-Za-z]/.test(w))
+   .slice(0, 2)
+   .map((w) => w[0].toUpperCase())
+   .join("");
 }
 
 export default function About() {
@@ -80,9 +81,9 @@ export default function About() {
           <div className="grid-3">
             {team.map((m) => (
               <div className="card team-card" key={m.name}>
-                {m.img ? (
+                {m.img? (
                   <img
-                    src={`${import.meta.env.BASE_URL}${m.img}`}
+                    src={m.img}
                     alt={m.name}
                     className="team-photo"
                   />
@@ -93,6 +94,31 @@ export default function About() {
                 )}
                 <h3>{m.name}</h3>
                 <p className="muted">{m.role}</p>
+
+                {/* LinkedIn Connect Button */}
+                {m.linkedin && (
+                  <a
+                    href={m.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="linkedin-btn"
+                    style={{
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: "6px",
+                      marginTop: "10px",
+                      padding: "6px 12px",
+                      background: "#0077b5",
+                      color: "white",
+                      borderRadius: "6px",
+                      fontSize: "0.85rem",
+                      textDecoration: "none",
+                      fontWeight: "500"[STRIPPED 75 bytes]"16" height="16" viewBox="0 0 24 24" fill="white">
+                      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.777 13.019H3.56V9h3.554v11.452zM22.225 0H1.771C.792 0 0.774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.454C23.205 24 24 23.227 24 22.271V1.729C24.774 23.205 0 22.225 0z"/>
+                    </svg>
+                    Connect
+                  </a>
+                )}
               </div>
             ))}
           </div>
