@@ -19,7 +19,7 @@ import {
 const serviceDetails = {
   "play-school": { items: PLAY_SCHOOL_HIGHLIGHTS.map((i) => i.name) },
   "study-material": { items: STUDY_MATERIAL_STREAMS.map((i) => i.name) },
-  marketing: { items: MARKETING_SERVICES.map((i) => i.name) },
+  "marketing": { items: MARKETING_SERVICES.map((i) => i.name) },
   "hr-services": { items: HR_SERVICE_STREAMS.map((i) => i.name) },
   "business-consulting": { items: BUSINESS_CONSULTING_SERVICES.map((i) => i.name) },
 };
