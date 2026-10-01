@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import WhatsAppCTA from "../components/WhatsAppCTA";
 import { ADDRESS, COMPANY_NAME, VERTICALS } from "../data/constants";
-import krishnaImg from "../assets/Krishana.webp";
+import krishnaImg from "src/assets/Krishana.webp";
 
 const team = [
   {
