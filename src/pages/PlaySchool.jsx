@@ -1,5 +1,6 @@
 import WhatsAppCTA from "../components/WhatsAppCTA";
-import { PLAY_SCHOOL_HIGHLIGHTS, COMPANY_NAME } from "../data/constants";
+import EnquiryForm from "../components/EnquiryForm";
+import { PLAY_SCHOOL_HIGHLIGHTS, COMPANY_NAME, PLAY_SCHOOL_ENQUIRY_FIELDS } from "../data/constants";
 
 export default function PlaySchool() {
   return (
@@ -16,6 +17,18 @@ export default function PlaySchool() {
           <WhatsAppCTA message="Hi, I'd like to know about the Play School franchise.">
             Ask about the franchise on WhatsApp
           </WhatsAppCTA>
+        </div>
+      </section>
+
+      <section>
+        <div className="wrap">
+          <EnquiryForm
+            title="Play School Franchise Enquiry"
+            note="Share a few details about you and your city — our team will get in touch with the franchise details and next steps."
+            fields={PLAY_SCHOOL_ENQUIRY_FIELDS}
+            formName="Play School — Franchise Enquiry"
+            whatsappMessage="Hi, I'd like to know about the Play School franchise."
+          />
         </div>
       </section>
 
