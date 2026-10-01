@@ -1,19 +1,20 @@
 import WhatsAppCTA from "../components/WhatsAppCTA";
-import { MARKETING_SERVICES, COMPANY_NAME } from "../data/constants";
+import EnquiryForm from "../components/EnquiryForm";
+import { HR_SERVICE_STREAMS, COMPANY_NAME, HR_ENQUIRY_FIELDS } from "../data/constants";
 
-export default function Marketing() {
+export default function HRServices() {
   return (
     <>
       <section className="page-hero">
         <div className="wrap">
-          <div className="eyebrow">Marketing · Online & Offline</div>
-          <h1>We grow brands that dominate online — and on the ground</h1>
+          <div className="eyebrow">HR Services</div>
+          <h1>Faculty & staff placements for every major stream</h1>
           <p>
-            From brand films to ad spend to local campaigns, {COMPANY_NAME}'s
-            in-house marketing team handles every piece of your presence.
+            {COMPANY_NAME} provides faculty and staff for IIT-JEE, NEET and
+            more — matching institutes with qualified people across India.
           </p>
-          <WhatsAppCTA message="Hi, I'd like to discuss a marketing project.">
-            Discuss your project on WhatsApp
+          <WhatsAppCTA message="Hi, I'd like to discuss an HR / faculty requirement.">
+            Send us your requirement on WhatsApp
           </WhatsAppCTA>
         </div>
       </section>
@@ -21,19 +22,14 @@ export default function Marketing() {
       <section>
         <div className="wrap">
           <div className="section-head">
-            <div className="kicker">What we offer</div>
-            <h2>Our marketing services</h2>
+            <div className="kicker">Streams we cover</div>
+            <h2>Faculty & staff placements</h2>
           </div>
           <div className="grid-3">
-            {MARKETING_SERVICES.map((s) => (
+            {HR_SERVICE_STREAMS.map((s) => (
               <div className="card" key={s.name}>
                 <h3>{s.name}</h3>
                 <p className="muted">{s.desc}</p>
-                <ul className="dash-list">
-                  {s.points.map((p) => (
-                    <li key={p}>{p}</li>
-                  ))}
-                </ul>
                 <WhatsAppCTA
                   variant="ghost"
                   message={`Hi, I'm interested in ${s.name}.`}
@@ -48,33 +44,64 @@ export default function Marketing() {
 
       <section>
         <div className="wrap">
+          <EnquiryForm
+            title="Faculty Hiring Request"
+            note="Please fill this out to share your faculty requirement — our team will get in touch shortly with the best-matched teachers for your institute."
+            fields={HR_ENQUIRY_FIELDS}
+            formName="HR Services — Faculty Hiring Request"
+            whatsappMessage="Hi, I want to share my faculty requirement."
+          />
+        </div>
+      </section>
+
+      <section>
+        <div className="wrap">
           <div className="section-head">
             <div className="kicker">Who it's for</div>
-            <h2>Brands, franchise branches, and local businesses</h2>
+            <h2>For institutes hiring, and people looking to be hired</h2>
           </div>
           <div className="grid-3">
             <div className="card">
-              <h3>Growing brands</h3>
+              <h3>Coaching institutes</h3>
               <p className="muted">
-                Need consistent content and paid campaigns to build an online
-                presence from the ground up.
+                Hiring subject faculty for IIT-JEE, NEET, Board or Foundation
+                batches without running your own hiring process.
               </p>
             </div>
             <div className="card">
-              <h3>Franchise branches</h3>
+              <h3>Schools & play schools</h3>
               <p className="muted">
-                Need local marketing support to drive admissions or footfall
-                for a specific city or branch.
+                Need teaching or support staff, including for franchise
+                branches under our Play School vertical.
               </p>
             </div>
             <div className="card">
-              <h3>Local businesses</h3>
+              <h3>Faculty & job seekers</h3>
               <p className="muted">
-                Want offline reach — print, local ads and on-ground
-                campaigns — alongside a digital presence.
+                Looking for your next teaching role and want direct,
+                fast-moving contact instead of job portals.
               </p>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section>
+        <div className="wrap panel-card">
+          <h2>For institutes & businesses</h2>
+          <p className="muted">
+            Tell us the role, level and city — we shortlist qualified
+            candidates from our network and share profiles directly.
+          </p>
+          <h2 style={{ marginTop: 24 }}>For job seekers</h2>
+          <p className="muted">
+            Share your subject/role, experience and preferred cities on
+            WhatsApp — we'll match you with open positions and support you
+            through the interview process.
+          </p>
+          <WhatsAppCTA message="Hi, I'd like to apply / share an opening.">
+            Message us on WhatsApp
+          </WhatsAppCTA>
         </div>
       </section>
     </>
