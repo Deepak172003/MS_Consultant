@@ -318,7 +318,6 @@ export const BUSINESS_CONSULTING_ENQUIRY_FIELDS = [
   { name: "currentRevenue", label: "Approx. Monthly Revenue (optional)", type: "text" },
   { name: "notes", label: "Biggest Challenge Right Now", type: "textarea" },
 ];
-
 // ---------------------------------------------------------------------
 // Razorpay — set these once real values exist, both are public/safe to
 // ship in frontend code (no secret key involved for either flow).
