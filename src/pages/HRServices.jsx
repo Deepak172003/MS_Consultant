@@ -1,5 +1,6 @@
 import WhatsAppCTA from "../components/WhatsAppCTA";
-import { HR_SERVICE_STREAMS, COMPANY_NAME } from "../data/constants";
+import EnquiryForm from "../components/EnquiryForm";
+import { HR_SERVICE_STREAMS, COMPANY_NAME, HR_ENQUIRY_FIELDS } from "../data/constants";
 
 export default function HRServices() {
   return (
@@ -38,6 +39,18 @@ export default function HRServices() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section>
+        <div className="wrap">
+          <EnquiryForm
+            title="Faculty Hiring Request"
+            note="Please fill this out to share your faculty requirement — our team will get in touch shortly with the best-matched teachers for your institute."
+            fields={HR_ENQUIRY_FIELDS}
+            formName="HR Services — Faculty Hiring Request"
+            whatsappMessage="Hi, I want to share my faculty requirement."
+          />
         </div>
       </section>
 
