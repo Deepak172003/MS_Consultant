@@ -119,11 +119,22 @@ export default function About() {
             <div className="kicker">Our people</div>
             <h2>Core team</h2>
           </div>
-          <div className="grid-3">
+          <div
+  style={{
+    display: "flex",
+    flexWrap: "wrap",
+    justifyContent: "center",
+    gap: "24px",
+  }}
+>
             {team.map((m) => {
               const photo = getPhoto(m.photo);
               return (
-                <div className="card team-card" key={m.name}>
+                <div
+  className="card team-card"
+  key={m.name}
+  style={{ flex: "1 1 280px", maxWidth: "360px" }}
+>
                   {photo ? (
                     <img src={photo} alt={m.name} className="team-photo" loading="lazy" />
                   ) : (
