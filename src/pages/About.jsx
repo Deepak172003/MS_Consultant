@@ -72,7 +72,6 @@ function initials(name) {
 }
 
 const isValidLinkedIn = (url) => url && !url.includes("REPLACE-ID");
-console.log(Object.keys(teamImages));
 
 export default function About() {
   return (
@@ -120,7 +119,7 @@ export default function About() {
             <div className="kicker">Our people</div>
             <h2>Core team</h2>
           </div>
-          <div className="grid-3">
+          <div className="team-grid">
             {team.map((m) => {
               const photo = getPhoto(m.photo);
               return (
