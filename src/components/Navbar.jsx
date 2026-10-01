@@ -9,8 +9,8 @@ import { COMPANY_NAME, VERTICALS } from "../data/constants";
 // instead of five separate top-level links.
 const primaryLinks = [
   { to: "/", label: "Home" },
+    { to: "/about", label: "About" },
   { to: "/pricing", label: "Pricing" },
-  { to: "/about", label: "About" },
   {to:"/how-it-works", label: "How It Works" },
   {to:"/testimonials", label: "Testimonials" },
   { to:"/faq", label: "FAQ" },
