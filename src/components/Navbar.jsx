@@ -11,7 +11,11 @@ const primaryLinks = [
   { to: "/", label: "Home" },
   { to: "/pricing", label: "Pricing" },
   { to: "/about", label: "About" },
+  to:"/HowitWorks",label:"How It Work"}
+  {to:"/Testominoal",lable:"Testominoal"}
+  {to :"/FAQ",lable:"FAQ"}
   { to: "/contact", label: "Contact" },
+  
 ];
 
 // Full flat list for the mobile menu — services included here individually
