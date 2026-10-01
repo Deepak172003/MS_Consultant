@@ -1,4 +1,4 @@
-# Guruzan — edtech company site
+# MSC  — edtech company site
 
 One React website, one WhatsApp number, five verticals:
 - **Play School Franchise** — curriculum, teacher training, admissions & marketing support
