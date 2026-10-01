@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import WhatsAppCTA from "../components/WhatsAppCTA";
 import { ADDRESS, COMPANY_NAME, VERTICALS } from "../data/constants";
+import krishnaImg from "../assets/Krishana.webp";
 
 // Drop real photos into public/images/team/ (e.g. public/images/team/krishna.jpg)
 // and reference them here as "images/team/krishna.jpg" — no leading slash.
