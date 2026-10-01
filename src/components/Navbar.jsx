@@ -11,9 +11,9 @@ const primaryLinks = [
   { to: "/", label: "Home" },
   { to: "/pricing", label: "Pricing" },
   { to: "/about", label: "About" },
-  to:"/HowitWorks",label:"How It Work"}
-  {to:"/Testominoal",lable:"Testominoal"}
-  {to :"/FAQ",lable:"FAQ"}
+  {to:"/how-it-works", label: "How It Works" },
+  {to:"/testimonials", label: "Testimonials" },
+  { to:"/faq", label: "FAQ" },
   { to: "/contact", label: "Contact" },
   
 ];
