@@ -22,10 +22,10 @@ const primaryLinks = [
 // since there's no room for a hover dropdown on mobile.
 const allLinks = [
   { to: "/", label: "Home" },
+   { to: "/about", label: "About" },
   ...VERTICALS.map((v) => ({ to: v.path, label: v.label })),
   { to: "/pricing", label: "Pricing" },
   { to: "/how-it-works", label: "How It Works" },
-  { to: "/about", label: "About" },
   { to: "/contact", label: "Contact" },
 ];
 
