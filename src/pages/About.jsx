@@ -8,7 +8,7 @@ import krishnaImg from "../assets/Krishana.webp";
 // BASE_URL is prefixed below so this also works once deployed under
 // /MS_Consultant/ on GitHub Pages, not just in local dev.
 const team = [
-  { name: "Krishna Kr. Barnwal", role: "Founder & Chairman", img: "src/assets/Krishana.webp" },
+  { name: "Krishna Kr. Barnwal", role: "Founder & Chairman",img: krishnaImg},
   { name: "Rajesh Kr. Pandit", role: "Sr. Manager" },
   { name: "Priyanka Rajput", role: "Jr. Manager" },
   { name: "Dolly Kumari", role: "Jr. Manager" },
