@@ -7,7 +7,7 @@ import { ADDRESS, COMPANY_NAME, VERTICALS } from "../data/constants";
 // BASE_URL is prefixed below so this also works once deployed under
 // /MS_Consultant/ on GitHub Pages, not just in local dev.
 const team = [
-  { name: "Krishna Kr. Barnwal", role: "Founder & Chairman", img: "images/team/krishna.jpg" },
+  { name: "Krishna Kr. Barnwal", role: "Founder & Chairman", img: "src/assets/Krishana.webp" },
   { name: "Rajesh Kr. Pandit", role: "Sr. Manager" },
   { name: "Priyanka Rajput", role: "Jr. Manager" },
   { name: "Dolly Kumari", role: "Jr. Manager" },
