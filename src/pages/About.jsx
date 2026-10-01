@@ -119,7 +119,7 @@ export default function About() {
             <div className="kicker">Our people</div>
             <h2>Core team</h2>
           </div>
-          <div className="team-grid">
+          <div className="grid-3">
             {team.map((m) => {
               const photo = getPhoto(m.photo);
               return (
