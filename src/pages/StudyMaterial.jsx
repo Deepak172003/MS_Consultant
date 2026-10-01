@@ -1,5 +1,6 @@
 import WhatsAppCTA from "../components/WhatsAppCTA";
-import { STUDY_MATERIAL_STREAMS, COMPANY_NAME } from "../data/constants";
+import EnquiryForm from "../components/EnquiryForm";
+import { STUDY_MATERIAL_STREAMS, COMPANY_NAME, STUDY_MATERIAL_ENQUIRY_FIELDS } from "../data/constants";
 
 export default function StudyMaterial() {
   return (
@@ -16,6 +17,18 @@ export default function StudyMaterial() {
           <WhatsAppCTA message="Hi, I'd like to know more about your study material / test software.">
             Ask us on WhatsApp
           </WhatsAppCTA>
+        </div>
+      </section>
+
+      <section>
+        <div className="wrap">
+          <EnquiryForm
+            title="Study Material Request"
+            note="Tell us your stream and requirement — our team will share the right material and pricing."
+            fields={STUDY_MATERIAL_ENQUIRY_FIELDS}
+            formName="Study Material — Request"
+            whatsappMessage="Hi, I'd like to request study material / test software."
+          />
         </div>
       </section>
 
