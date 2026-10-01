@@ -12,6 +12,7 @@ const quickLinksA = [
 ];
 
 const quickLinksB = [
+  { to: "/pricing", label: "Pricing" },
   { to: "/about", label: "About" },
   { to: "/how-it-works", label: "How It Works" },
   { to: "/testimonials", label: "Testimonials" },
