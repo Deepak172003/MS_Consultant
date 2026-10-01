@@ -13,7 +13,7 @@ const team = [
   {
     name: "Krishna Kr. Barnwal",
     role: "Founder & Chairman",
-    photo: "src/assets/Team/Krishana-same.jpg",
+    photo: "Krishana-same.jpg",
     linkedin: "https://www.linkedin.com/in/krishna-kumar-barnwal-350124193",
   },
   {
