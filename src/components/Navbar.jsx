@@ -23,8 +23,8 @@ const primaryLinks = [
 const allLinks = [
   { to: "/", label: "Home" },
    { to: "/about", label: "About" },
-  ...VERTICALS.map((v) => ({ to: v.path, label: v.label })),
   { to: "/pricing", label: "Pricing" },
+  ...VERTICALS.map((v) => ({ to: v.path, label: v.label })),
   { to: "/how-it-works", label: "How It Works" },
   { to: "/contact", label: "Contact" },
 ];
