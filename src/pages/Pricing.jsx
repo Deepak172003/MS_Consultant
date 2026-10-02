@@ -9,7 +9,7 @@ import {
   MARKETING_SERVICES,
   HR_SERVICE_STREAMS,
   BUSINESS_CONSULTING_SERVICES,
-  RAZORPAY_BUTTON_ID,
+  PRICING_PLANS,
   RAZORPAY_SUBSCRIPTION_LINK,
   COMPANY_NAME,
 } from "../data/constants";
@@ -19,14 +19,12 @@ import {
 const serviceDetails = {
   "play-school": { items: PLAY_SCHOOL_HIGHLIGHTS.map((i) => i.name) },
   "study-material": { items: STUDY_MATERIAL_STREAMS.map((i) => i.name) },
-  "marketing": { items: MARKETING_SERVICES.map((i) => i.name) },
+  marketing: { items: MARKETING_SERVICES.map((i) => i.name) },
   "hr-services": { items: HR_SERVICE_STREAMS.map((i) => i.name) },
   "business-consulting": { items: BUSINESS_CONSULTING_SERVICES.map((i) => i.name) },
 };
 
 export default function Pricing() {
-  const hasPayment = Boolean(RAZORPAY_BUTTON_ID || RAZORPAY_SUBSCRIPTION_LINK);
-
   return (
     <>
       <section className="page-hero">
@@ -36,7 +34,7 @@ export default function Pricing() {
           <p>
             Every engagement is a little different, so the exact price
             depends on your requirement. Message us on WhatsApp for a quote,
-            or pay a quoted amount directly below once you have one.
+            or pick a plan below to pay the starting price directly.
           </p>
         </div>
       </section>
@@ -71,38 +69,49 @@ export default function Pricing() {
       </section>
 
       <section>
-        <div className="wrap panel-card pay-now-card">
-          <div className="kicker">Pay Now</div>
-          <h2>Already have a quoted amount?</h2>
-          <p className="muted">
-            Pay a one-time amount, or set up auto-debit (NACH) for a
-            recurring fee — both handled securely through Razorpay.
-          </p>
+        <div className="wrap">
+          <div className="section-head">
+            <div className="kicker">Pay Now</div>
+            <h2>Starting prices — pick a plan</h2>
+            <p className="muted">
+              These are starting prices; the final amount depends on your
+              exact requirement. Pick the closest plan to pay now, or
+              message us on WhatsApp to confirm the right one first.
+            </p>
+          </div>
+          <div className="grid-3">
+            {PRICING_PLANS.map((plan) => (
+              <div className="card plan-card" key={plan.key}>
+                <h3>{plan.name}</h3>
+                <div className="plan-price">
+                  {plan.price}
+                  <span>starting</span>
+                </div>
+                <p className="muted plan-tagline">{plan.tagline}</p>
+                <ul className="dash-list">
+                  {plan.features.map((f, i) => (
+                    <li key={i}>{f}</li>
+                  ))}
+                </ul>
+                <div className="plan-pay">
+                  {plan.buttonId ? (
+                    <RazorpayButton buttonId={plan.buttonId} />
+                  ) : (
+                    <WhatsAppCTA
+                      message={`Hi ${COMPANY_NAME}, I'd like to go ahead with the ${plan.name} plan (${plan.price}).`}
+                    >
+                      Pay Now — {plan.price}
+                    </WhatsAppCTA>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
 
-          {hasPayment ? (
-            <div className="pay-now-options">
-              {RAZORPAY_BUTTON_ID && (
-                <div>
-                  <h3>One-time payment</h3>
-                  <RazorpayButton buttonId={RAZORPAY_BUTTON_ID} />
-                </div>
-              )}
-              {RAZORPAY_SUBSCRIPTION_LINK && (
-                <div>
-                  <h3>Recurring (NACH)</h3>
-                  <SubscriptionLinkButton link={RAZORPAY_SUBSCRIPTION_LINK} />
-                </div>
-              )}
-            </div>
-          ) : (
-            <div className="pay-now-pending">
-              <p className="muted" style={{ marginBottom: 14 }}>
-                Online payment is being set up. For now, message us on
-                WhatsApp to arrange payment.
-              </p>
-              <WhatsAppCTA message={`Hi ${COMPANY_NAME}, I'd like to make a payment.`}>
-                Message us on WhatsApp
-              </WhatsAppCTA>
+          {RAZORPAY_SUBSCRIPTION_LINK && (
+            <div className="panel-card pay-now-card" style={{ marginTop: 20 }}>
+              <h3>Prefer monthly auto-debit (NACH) instead?</h3>
+              <SubscriptionLinkButton link={RAZORPAY_SUBSCRIPTION_LINK} />
             </div>
           )}
         </div>
