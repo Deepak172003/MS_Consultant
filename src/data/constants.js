@@ -10,7 +10,7 @@ export const OFFICE_PHONE = "+91 6542-452447";
 export const MOBILE_PHONES = ["+91 70042 37947", "+91 70047 04332"];
 export const EMAIL = "info@mscjobs.in";
 export const ADDRESS = "2nd Floor, Golden Palace, Bye Pass Road, Chas, Bokaro (JH)";
-export const OPENING_HOURS = "Mon–Sat, 10:00 AM – 7:00 PM"; // TODO: confirm real hours
+export const OPENING_HOURS = "Mon–Sat, 10:00 AM – 6:00 PM"; // TODO: confirm real hours
 
 // Office locations. Each needs its own "Get Directions" Google Maps link.
 export const OFFICES = [
@@ -113,7 +113,6 @@ export const HR_SERVICE_STREAMS = [
   { name: "NEET Faculty", desc: "Physics, Chemistry, Biology faculty" },
   { name: "Board Level Faculty", desc: "11th & 12th subject faculty" },
   { name: "Foundation Faculty", desc: "Classes 8th to 10th" },
-  { name: "Digital Marketing Faculty", desc: "Specialists in digital marketing strategies" },
 ];
 
 // Business Consulting — "zero se profitable". Service list is a sensible
