@@ -8,6 +8,9 @@ import { COMPANY_NAME, VERTICALS } from "../data/constants";
 // verticals), Pricing, Contact.
 const afterServicesLinks = [
   { to: "/pricing", label: "Pricing" },
+  { to: "/how-it-works", label: "How It Works" },
+  { to: "/testimonials", label: "Testimonials" },
+  { to: "/faq", label: "FAQ" },
   { to: "/contact", label: "Contact" },
 ];
 
