@@ -55,7 +55,7 @@ const team = [
     linkedin: "https://www.linkedin.com/in/ashish-kumar-4125a5368",
   },
   {
-    name: "Sagar",
+    name: "Sagar Barnwal",
     role: "Recruiter",
     photo: "Sagar.webp",
     linkedin: "https://www.linkedin.com/in/sagar-barnwal-8b26a9426",
