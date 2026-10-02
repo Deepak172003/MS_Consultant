@@ -318,13 +318,121 @@ export const BUSINESS_CONSULTING_ENQUIRY_FIELDS = [
   { name: "currentRevenue", label: "Approx. Monthly Revenue (optional)", type: "text" },
   { name: "notes", label: "Biggest Challenge Right Now", type: "textarea" },
 ];
+
 // ---------------------------------------------------------------------
 // Razorpay — set these once real values exist, both are public/safe to
 // ship in frontend code (no secret key involved for either flow).
 // ---------------------------------------------------------------------
 
-// One-time payment: Razorpay Dashboard → Payment Pages/Buttons → create → copy the Button ID.
-export const RAZORPAY_BUTTON_ID = ""; // e.g. "pl_XXXXXXXXXXXX"
-
 // Recurring / NACH: Razorpay Dashboard → Subscriptions → create a Plan → create a Subscription → copy its link.
 export const RAZORPAY_SUBSCRIPTION_LINK = ""; // e.g. "https://rzp.io/i/xxxxxxx"
+
+// ⚠️ PLACEHOLDER PRICES — these 3 numbers (₹5,000 / ₹10,000 / ₹20,000) were
+// given as examples to fill the layout, not confirmed per-service amounts.
+// Edit price/tagline/features for each plan below as the real offer is
+// decided. "buttonId" is empty until a real Razorpay Payment Button is
+// created for that exact amount (Razorpay buttons are fixed-amount, so
+// each plan needs its own button) — until then, Pay Now falls back to
+// WhatsApp automatically, so nothing breaks or charges the wrong amount.
+export const PRICING_PLANS = [
+  {
+    key: "basic",
+    name: "Basic",
+    price: "₹5,000",
+    tagline: "{{ one line on who this plan is for }}",
+    features: [
+      "{{ what's included #1 }}",
+      "{{ what's included #2 }}",
+      "{{ what's included #3 }}",
+    ],
+    buttonId: "", // e.g. "pl_XXXXXXXXXXXX"
+  },
+  {
+    key: "premium",
+    name: "Premium",
+    price: "₹10,000",
+    tagline: "{{ one line on who this plan is for }}",
+    features: [
+      "{{ what's included #1 }}",
+      "{{ what's included #2 }}",
+      "{{ what's included #3 }}",
+      "{{ what's included #4 }}",
+    ],
+    buttonId: "",
+  },
+  {
+    key: "standard",
+    name: "Standard / Pro",
+    price: "₹20,000",
+    tagline: "{{ one line on who this plan is for }}",
+    features: [
+      "{{ what's included #1 }}",
+      "{{ what's included #2 }}",
+      "{{ what's included #3 }}",
+      "{{ what's included #4 }}",
+      "{{ what's included #5 }}",
+    ],
+    buttonId: "",
+  },
+];
+
+// ---------------------------------------------------------------------
+// Per-service starting price + its own Razorpay Payment Button.
+// IMPORTANT: a Razorpay Payment Button is always a FIXED amount, so each
+// service needs its own separate button created in the Razorpay Dashboard
+// (Payment Pages/Buttons → create → set that service's amount → copy the
+// Button ID) — you can't reuse one button for five different prices.
+//
+// ⚠️ startingPrice below is a PLACEHOLDER (null = "price not set yet").
+// Only 3 of the 5 prices were given (₹5,000 / ₹10,000 / ₹20,000) without
+// saying which service each belongs to — filling these in wrong would
+// mean charging someone the wrong amount, so none have been guessed.
+// Fill in startingPrice (a number, e.g. 5000) and razorpayButtonId for
+// each service below once confirmed, and the price + Pay Now button
+// appear on that service's card automatically.
+export const PRICING = [
+  { key: "play-school", startingPrice: null, razorpayButtonId: "" },
+  { key: "study-material", startingPrice: null, razorpayButtonId: "" },
+  { key: "marketing", startingPrice: null, razorpayButtonId: "" },
+  { key: "hr-services", startingPrice: null, razorpayButtonId: "" },
+  { key: "business-consulting", startingPrice: null, razorpayButtonId: "" },
+];
+
+// ---------------------------------------------------------------------
+// Pricing tiers — same 3 tiers offered under every service (per Krishna
+// Sir's instruction). Each tier needs its own Razorpay Payment Button,
+// since the amount differs. NOTE: because the price is identical across
+// all five services, each tier's button is shared across all of them —
+// a payment confirms the AMOUNT paid, not which specific service it was
+// for. If per-service tracking matters, each service/tier pair would
+// need its own button (15 total) created in the Razorpay dashboard
+// instead of just 3 — happy to switch to that if needed.
+// ---------------------------------------------------------------------
+
+export const PRICING_TIERS = [
+  {
+    key: "basic",
+    name: "Basic",
+    price: 5000,
+    // TODO: confirm what's actually included in this tier.
+    features: ["Feature details coming soon", "Feature details coming soon", "Feature details coming soon"],
+    buttonId: "", // e.g. "pl_XXXXXXXXXXXX" — Razorpay button for ₹5,000
+  },
+  {
+    key: "premium",
+    name: "Premium",
+    price: 10000,
+    featured: true,
+    // TODO: confirm what's actually included in this tier.
+    features: ["Feature details coming soon", "Feature details coming soon", "Feature details coming soon", "Feature details coming soon"],
+    buttonId: "", // e.g. "pl_XXXXXXXXXXXX" — Razorpay button for ₹10,000
+  },
+  {
+    key: "pro",
+    name: "Pro",
+    price: 20000,
+    // TODO: confirm what's actually included in this tier.
+    features: ["Feature details coming soon", "Feature details coming soon", "Feature details coming soon", "Feature details coming soon", "Feature details coming soon"],
+    buttonId: "", // e.g. "pl_XXXXXXXXXXXX" — Razorpay button for ₹20,000
+  },
+];
