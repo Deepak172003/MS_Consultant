@@ -4,27 +4,20 @@ import WhatsAppCTA from "./WhatsAppCTA";
 import logo from "../assets/mslogo_ms_only.webp";
 import { COMPANY_NAME, VERTICALS } from "../data/constants";
 
-// Desktop nav: Home, a "Services" dropdown (all five verticals), Pricing,
-// About, Contact. Short and flat, with the verticals tucked under one menu
-// instead of five separate top-level links.
-const primaryLinks = [
-  { to: "/", label: "Home" },
-  { to: "/about", label: "About" },
+// Desktop nav order: Home, About, a "Services" dropdown (all five
+// verticals), Pricing, Contact.
+const afterServicesLinks = [
   { to: "/pricing", label: "Pricing" },
-  {to:"/how-it-works", label: "How It Works" },
-  {to:"/testimonials", label: "Testimonials" },
-  { to:"/faq", label: "FAQ" },
   { to: "/contact", label: "Contact" },
-  
 ];
 
-// Full flat list for the mobile menu — services included here individually
-// since there's no room for a hover dropdown on mobile.
+// Full flat list for the mobile menu, in the same order — services included
+// individually here since there's no room for a hover dropdown on mobile.
 const allLinks = [
   { to: "/", label: "Home" },
-   { to: "/about", label: "About" },
-  { to: "/pricing", label: "Pricing" },
+  { to: "/about", label: "About" },
   ...VERTICALS.map((v) => ({ to: v.path, label: v.label })),
+  { to: "/pricing", label: "Pricing" },
   { to: "/how-it-works", label: "How It Works" },
   { to: "/contact", label: "Contact" },
 ];
@@ -74,6 +67,9 @@ export default function Navbar() {
           <NavLink to="/" end className={({ isActive }) => (isActive ? "active" : "")}>
             Home
           </NavLink>
+          <NavLink to="/about" className={({ isActive }) => (isActive ? "active" : "")}>
+            About
+          </NavLink>
 
           <div
             className="nav-dropdown"
@@ -109,7 +105,7 @@ export default function Navbar() {
             )}
           </div>
 
-          {primaryLinks.slice(1).map((l) => (
+          {afterServicesLinks.map((l) => (
             <NavLink
               key={l.to}
               to={l.to}
