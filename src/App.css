@@ -263,12 +263,29 @@ section { padding: 60px 0; }
 
 /* Pricing page */
 .pricing-card { display: flex; flex-direction: column; }
-.pricing-card-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: auto; padding-top: 16px; }
+.pricing-card-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; margin-bottom: 4px; }
+.pricing-card-top h3 { margin-bottom: 0; flex: 1; }
+.price-tag { text-align: right; flex: none; }
+.price-amount { display: block; font-family: 'Sora', sans-serif; font-weight: 800; font-size: 1.15rem; color: var(--accent); }
+.price-note { display: block; font-size: .72rem; color: var(--sub); }
+.price-tag-pending .price-note { font-size: .78rem; font-weight: 600; color: var(--sub); }
+.pricing-card-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: auto; padding-top: 16px; align-items: center; }
 .pay-now-card { text-align: center; }
 .pay-now-card h2 { margin-top: 4px; }
 .pay-now-options { display: flex; gap: 32px; justify-content: center; flex-wrap: wrap; margin-top: 20px; }
 .pay-now-options h3 { font-size: .9rem; color: var(--sub); font-weight: 600; margin-bottom: 10px; }
 .pay-now-pending { margin-top: 20px; }
+
+/* Pricing plan cards (Basic / Premium / Standard) */
+.plan-card { display: flex; flex-direction: column; }
+.plan-price {
+  font-family: 'Sora', sans-serif; font-weight: 800; font-size: 2rem; color: var(--accent);
+  margin: 6px 0 4px; display: flex; align-items: baseline; gap: 8px;
+}
+.plan-price span { font-family: 'Inter', sans-serif; font-weight: 500; font-size: .8rem; color: var(--sub); }
+.plan-tagline { margin-bottom: 14px; font-size: .88rem; }
+.plan-pay { margin-top: auto; padding-top: 16px; }
+.plan-pay .btn { width: 100%; justify-content: center; }
 
 /* Contact form */
 .contact-form { display: flex; flex-direction: column; gap: 4px; }
