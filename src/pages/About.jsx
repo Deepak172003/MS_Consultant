@@ -33,7 +33,7 @@ const team = [
   {
     name: "Priyanka Rajput",
     role: "Sales Manager ",
-    photo: "Priyanka Sales.webp",
+    photo: "Priyanka_Sales.webp",
     linkedin: "https://www.linkedin.com/in/priyanka-rajput-31a621296",
   },
   {
@@ -44,7 +44,7 @@ const team = [
   },
   {
     name: "Pankaj Kumar",
-    role: "Operatiol Manager",
+    role: "Operational  Manager",
     photo: "Pankaj.webp",
     linkedin: "https://www.linkedin.com/in/pankaj-kumar-0868b9374",
   },
@@ -58,7 +58,7 @@ const team = [
     name: "Sagar",
     role: "Recruiter",
     photo: "Sagar.webp",
-    linkedin: "https://www.linkedin.com/in/REPLACE-ID",
+    linkedin: "https://www.linkedin.com/in/sagar-barnwal-8b26a9426",
   },
 ];
 
