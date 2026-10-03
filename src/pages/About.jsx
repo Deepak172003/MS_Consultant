@@ -2,7 +2,9 @@ import { Link } from "react-router-dom";
 import WhatsAppCTA from "../components/WhatsAppCTA";
 import { ADDRESS, COMPANY_NAME, VERTICALS } from "../data/constants";
 
-// Auto-load every image from src/assets/team (Vite)
+// Auto-load every image from src/assets/Team (Vite).
+// NOTE: folder name is case-sensitive on Linux hosts (Vercel/Netlify) —
+// it must match your real folder name exactly.
 const teamImages = import.meta.glob("/src/assets/Team/*.{webp,WEBP,jpg,JPG,jpeg,JPEG,png,PNG}", {
   eager: true,
   import: "default",
@@ -17,6 +19,7 @@ const imageMap = Object.fromEntries(
 
 const getPhoto = (file) => (file ? imageMap[file.toLowerCase()] : undefined);
 
+// First item is the founder and is shown alone in the center.
 const team = [
   {
     name: "Krishna Kr. Barnwal",
@@ -28,23 +31,23 @@ const team = [
     name: "Rajesh Kr. Pandit",
     role: "Sr. Manager",
     photo: "rejesh-edited.webp",
-    linkedin:"https://www.linkedin.com/in/rajesh-pandit-2b3b86283",
+    linkedin: "https://www.linkedin.com/in/rajesh-pandit-2b3b86283",
   },
   {
     name: "Priyanka Rajput",
-    role: "Sales Manager ",
+    role: "Sales Manager",
     photo: "Priyanka_Sales.webp",
     linkedin: "https://www.linkedin.com/in/priyanka-rajput-31a621296",
   },
   {
     name: "Dolly Kumari",
-    role: "Recruiter Manager ",
+    role: "Recruiter Manager",
     photo: "Dolly.webp",
     linkedin: "https://www.linkedin.com/in/dolly-saw-2750932a2",
   },
   {
     name: "Pankaj Kumar",
-    role: "Operational  Manager",
+    role: "Operational Manager",
     photo: "Pankaj.webp",
     linkedin: "https://www.linkedin.com/in/pankaj-kumar-0868b9374",
   },
@@ -62,6 +65,13 @@ const team = [
   },
 ];
 
+// Dev-only warning if a photo filename doesn't match any file in the Team folder.
+if (import.meta.env.DEV) {
+  team.forEach((m) => {
+    if (!getPhoto(m.photo)) console.warn("Missing team photo:", m.photo);
+  });
+}
+
 function initials(name) {
   return name
     .split(" ")
@@ -71,7 +81,39 @@ function initials(name) {
     .join("");
 }
 
-const isValidLinkedIn = (url) => url && !url.includes("REPLACE-ID");
+const isValidLinkedIn = (url) => Boolean(url);
+
+const [founder, ...others] = team;
+
+function TeamCard({ m, featured = false }) {
+  const photo = getPhoto(m.photo);
+  return (
+    <div className={`card team-card${featured ? " team-card-featured" : ""}`}>
+      {photo ? (
+        <img
+          src={photo}
+          alt={`${m.name}, ${m.role.trim()}`}
+          className={`team-photo${featured ? " team-photo-featured" : ""}`}
+          loading="lazy"
+        />
+      ) : (
+        <div className="team-photo team-photo-fallback">{initials(m.name)}</div>
+      )}
+      <h3>{m.name}</h3>
+      <p className="muted">{m.role.trim()}</p>
+      {isValidLinkedIn(m.linkedin) && (
+        <a
+          href={m.linkedin}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="linkedin-btn"
+        >
+          Connect on LinkedIn
+        </a>
+      )}
+    </div>
+  );
+}
 
 export default function About() {
   return (
@@ -119,44 +161,17 @@ export default function About() {
             <div className="kicker">Our people</div>
             <h2>Core team</h2>
           </div>
-          <div className="grid-3">
-            {team.map((m) => {
-              const photo = getPhoto(m.photo);
-              return (
-                <div
-  className="card team-card"
-  key={m.name}
-  style={{ flex: "1 1 280px", maxWidth: "360px" }}
->
-                  {photo ? (
-                    <img src={photo} alt={m.name} className="team-photo" loading="lazy" />
-                  ) : (
-                    <div className="team-photo team-photo-fallback">{initials(m.name)}</div>
-                  )}
-                  <h3>{m.name}</h3>
-                  <p className="muted">{m.role}</p>
-                  {isValidLinkedIn(m.linkedin) && (
-                    <a
-                      href={m.linkedin}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      style={{
-                        display: "inline-flex",
-                        marginTop: "10px",
-                        padding: "6px 12px",
-                        background: "#0077b5",
-                        color: "white",
-                        borderRadius: "6px",
-                        fontSize: "0.85rem",
-                        textDecoration: "none",
-                      }}
-                    >
-                      Connect on LinkedIn
-                    </a>
-                  )}
-                </div>
-              );
-            })}
+
+          {/* Founder in the center */}
+          <div className="team-lead">
+            <TeamCard m={founder} featured />
+          </div>
+
+          {/* Everyone else below, centered */}
+          <div className="team-row">
+            {others.map((m) => (
+              <TeamCard m={m} key={m.name} />
+            ))}
           </div>
         </div>
       </section>
