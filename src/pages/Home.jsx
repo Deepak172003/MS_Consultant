@@ -92,15 +92,6 @@ export default function Home() {
               <Link className="btn btn-ghost" to="/marketing">
                 Marketing
               </Link>
-              <a
-                className="btn btn-ghost"
-                href="https://whatsapp.com/channel/0029Va7CtqtAO7RDRpB4Ei1b"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Join our WhatsApp channel"
-              >
-                Join Now
-              </a>
             </div>
           </div>
 
@@ -195,6 +186,41 @@ export default function Home() {
                 <animate attributeName="r" values="6;9;6" dur="2.4s" repeatCount="indefinite" />
               </circle>
             </svg>
+          </div>
+        </div>
+      </section>
+
+      {/* Join WhatsApp channel */}
+      <section style={{ padding: "32px 0" }}>
+        <style>{`
+          .join-band{max-width:760px;margin:0 auto;padding:28px 24px;border-radius:24px;text-align:center;
+            background:linear-gradient(135deg,#1F3A6E,#2B4C8C);color:#fff;box-shadow:0 14px 34px rgba(31,58,110,.28)}
+          .join-band h2{color:#fff;font-size:1.4rem;margin:0 0 6px}
+          .join-band p{color:#D9E2F5;margin:0 0 18px}
+          .join-btn{display:inline-flex;align-items:center;gap:10px;padding:14px 34px;border-radius:999px;
+            background:#25D366;color:#fff;font-weight:700;font-size:1.15rem;text-decoration:none;
+            animation:joinPulse 2s infinite;transition:transform .2s}
+          .join-btn:hover{transform:scale(1.06)}
+          .join-btn svg{width:24px;height:24px;fill:#fff}
+          @keyframes joinPulse{0%{box-shadow:0 0 0 0 rgba(37,211,102,.6)}70%{box-shadow:0 0 0 16px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
+          @media (prefers-reduced-motion:reduce){.join-btn{animation:none}}
+        `}</style>
+        <div className="wrap">
+          <div className="join-band">
+            <h2>Get updates on our WhatsApp channel</h2>
+            <p>Offers, admissions and placement news — straight to your phone.</p>
+            <a
+              className="join-btn"
+              href="https://whatsapp.com/channel/0029Va7CtqtAO7RDRpB4Ei1b"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Join our WhatsApp channel"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm5.8 14.12c-.25.69-1.43 1.32-1.97 1.4-.5.07-1.13.1-1.82-.11-.42-.13-.96-.31-1.65-.6-2.9-1.25-4.8-4.17-4.94-4.37-.15-.2-1.18-1.57-1.18-2.99 0-1.42.74-2.12 1-2.41.26-.29.57-.36.76-.36l.55.01c.18.01.42-.07.65.5.25.59.84 2.04.91 2.19.07.15.12.32.02.51-.1.2-.15.32-.3.49-.15.17-.31.38-.44.51-.15.15-.3.31-.13.6.17.29.76 1.25 1.63 2.03 1.12 1 2.06 1.31 2.35 1.46.29.15.46.12.63-.07.17-.2.73-.85.93-1.14.2-.29.39-.24.66-.15.27.1 1.7.8 1.99.95.29.15.49.22.56.34.07.12.07.7-.18 1.39z" />
+              </svg>
+              Join Now
+            </a>
           </div>
         </div>
       </section>
