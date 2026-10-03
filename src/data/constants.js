@@ -160,20 +160,43 @@ export const BUSINESS_CONSULTING_STEPS = [
 // NOTE: placeholder quotes — replace with real feedback before launch.
 export const TESTIMONIALS = [
   {
-    quote: "Add a real quote from a play school franchise partner.",
-    name: "Client name",
-    role: "Franchise Partner, City",
+    quote: "The team helped us strengthen our online presence through consistent digital marketing and a clear strategy. We appreciated their communication and support throughout the process.",
+    name: "Access Con Solar",
+    Services: "Digital Marketing,Bokaro",
   },
   {
-    quote: "Add a real quote from an institute using our study material.",
-    name: "Client name",
-    role: "Institute, City",
+    quote: "We had a great experience working with the team for our digital marketing requirements. They understood our goals and provided consistent support to improve our online presence.",
+    name: "MHA Shopping Pvt. Ltd.",
+    Services: "Digital Marketing, Ranchi",
   },
   {
-    quote: "Add a real quote from a brand you've run campaigns for.",
-    name: "Client name",
-    role: "Brand, City",
+    quote: "The team understood our business requirements and provided focused digital marketing support. We appreciated their professionalism and consistent communication.",
+    name: "Interior Designer Hub",
+    Services: "Digital Marketing, Bokaro",
   },
+  {
+    quote: "The team provided professional digital marketing services and helped us maintain a stronger online presence. Their support and communication were very good.”,
+    name: "Eicher Tractor",
+    Services: "Digital Marketing, Bokaro",
+  },
+  {
+    quote:"The team understood our requirements and developed a clean and user-friendly website for us. They were supportive throughout the development process.” ,
+    name: "Reyansha Library",
+    Services: "Digital Marketing & Web Development, Bokaro",
+  },
+  {
+    quote:"We received professional digital marketing support from the team. They understood our requirements well and helped us improve our digital presence.” ,
+    name: "Global Institute",
+    Services: "Digital Marketing, Bokaro",
+  },
+  {
+    quote:"The team provided dedicated digital marketing support for our coaching institute. Their communication was clear, and they worked according to our requirements.” ,
+    name: "Abhyas Coaching",
+    Services: "Digital Marketing, Bokaro",
+  },
+  
+  
+  
 ];
 
 export const FAQS = [
