@@ -193,10 +193,6 @@ section { padding: 60px 0; }
   font-size: .85rem; font-weight: 600; transition: transform .2s ease, box-shadow .2s ease;
 }
 .linkedin-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 18px rgba(0,119,181,.35); }
-.dash-list { list-style: none; font-size: .88rem; color: var(--sub); margin: 12px 0; }
-.dash-list li { padding: 3px 0; padding-left: 16px; position: relative; }
-.dash-list li::before { content: "—"; position: absolute; left: 0; color: var(--accent2); }
-
 /* Steps */
 .step { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px; }
 .step-num { font-family: 'Sora', sans-serif; font-weight: 800; color: var(--accent2); font-size: 1.5rem; margin-bottom: 8px; }
