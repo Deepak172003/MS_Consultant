@@ -98,14 +98,19 @@ export default function Home() {
           <div className="banner-graphic" aria-hidden="true">
             <svg viewBox="0 0 400 400" fill="none">
               {/* Rings behind (continuously rotating, opposite directions) */}
-              <circle className="ring-a" cx="200" cy="200" r="140" stroke="#E8B34C" strokeWidth="2" strokeDasharray="4 10" strokeLinecap="round" />
-              <circle className="ring-b" cx="200" cy="200" r="118" stroke="#E8B34C" strokeOpacity=".45" strokeWidth="1.5" strokeDasharray="2 7" strokeLinecap="round" />
+              <circle cx="200" cy="200" r="140" stroke="#E8B34C" strokeWidth="2" strokeDasharray="4 10" strokeLinecap="round">
+                <animateTransform attributeName="transform" type="rotate" from="0 200 200" to="360 200 200" dur="60s" repeatCount="indefinite" />
+              </circle>
+              <circle cx="200" cy="200" r="118" stroke="#E8B34C" strokeOpacity=".45" strokeWidth="1.5" strokeDasharray="2 7" strokeLinecap="round">
+                <animateTransform attributeName="transform" type="rotate" from="360 200 200" to="0 200 200" dur="90s" repeatCount="indefinite" />
+              </circle>
 
               {/* Orbiting icons */}
-              <g className="orbit">
+              <g>
+                <animateTransform attributeName="transform" type="rotate" from="0 200 200" to="360 200 200" dur="45s" repeatCount="indefinite" />
                 {/* School (top) */}
                 <g transform="translate(200 60) scale(.9)">
-                  <g className="upright icon-shadow">
+                  <g className="icon-shadow">
                     <rect x="-42" y="-6" width="84" height="9" rx="3" fill="#E8B34C" />
                     <rect x="-38" y="0" width="76" height="26" rx="4" fill="#1F3A6E" />
                     <rect x="-15" y="-28" width="30" height="54" rx="4" fill="#1F3A6E" />
@@ -121,7 +126,7 @@ export default function Home() {
 
                 {/* Book (top-right) */}
                 <g transform="translate(333 157) scale(.9)">
-                  <g className="upright icon-shadow">
+                  <g className="icon-shadow">
                     <rect x="-42" y="-24" width="84" height="52" rx="6" fill="#1F3A6E" />
                     <path d="M-37 -21 Q-18 -28 0 -17 V24 Q-18 14 -37 20Z" fill="#F7F0DC" />
                     <path d="M37 -21 Q18 -28 0 -17 V24 Q18 14 37 20Z" fill="#FBF6E8" />
@@ -139,7 +144,7 @@ export default function Home() {
 
                 {/* Laptop (bottom-right) */}
                 <g transform="translate(282 313) scale(.9)">
-                  <g className="upright icon-shadow">
+                  <g className="icon-shadow">
                     <rect x="-36" y="-32" width="72" height="50" rx="6" fill="#1F3A6E" />
                     <rect x="-31" y="-27" width="62" height="40" rx="4" fill="#E8B34C" />
                     <rect x="-23" y="-21" width="46" height="28" rx="4" fill="#F7F0DC" />
@@ -153,7 +158,7 @@ export default function Home() {
 
                 {/* Megaphone (bottom-left) */}
                 <g transform="translate(118 313) scale(.9)">
-                  <g className="upright icon-shadow">
+                  <g className="icon-shadow">
                     <g transform="rotate(-22)">
                       <rect x="-14" y="8" width="14" height="30" rx="6" fill="#E8B34C" />
                       <path d="M-30 -12 H-4 L26 -34 Q36 0 26 34 L-4 12 H-30Z" fill="#E8B34C" />
@@ -165,7 +170,7 @@ export default function Home() {
 
                 {/* People (top-left) */}
                 <g transform="translate(67 157) scale(.9)">
-                  <g className="upright icon-shadow">
+                  <g className="icon-shadow">
                     <path d="M-42 20 Q-44 2 -26 4 L-8 10" stroke="#1F3A6E" strokeWidth="11" strokeLinecap="round" />
                     <path d="M42 20 Q44 2 26 4 L8 10" stroke="#1F3A6E" strokeWidth="11" strokeLinecap="round" />
                     <path d="M-22 34 Q-22 8 0 8 Q22 8 22 34Z" fill="#1F3A6E" />
@@ -177,7 +182,9 @@ export default function Home() {
               </g>
 
               {/* Centre dot */}
-              <circle className="dot-pulse" cx="200" cy="200" r="6" fill="#E8B34C" />
+              <circle cx="200" cy="200" r="6" fill="#E8B34C">
+                <animate attributeName="r" values="6;9;6" dur="2.4s" repeatCount="indefinite" />
+              </circle>
             </svg>
           </div>
         </div>
