@@ -113,6 +113,7 @@ export const HR_SERVICE_STREAMS = [
   { name: "NEET Faculty", desc: "Physics, Chemistry, Biology faculty" },
   { name: "Board Level Faculty", desc: "11th & 12th subject faculty" },
   { name: "Foundation Faculty", desc: "Classes 8th to 10th" },
+  { name: "Digital Marketing Faculty", desc: "Specialists in digital marketing strategies" },
 ];
 
 // Business Consulting — "zero se profitable". Service list is a sensible
@@ -157,57 +158,55 @@ export const BUSINESS_CONSULTING_STEPS = [
   { n: "3", title: "Execute & track profit", desc: "We work alongside you on the plan and review real numbers, not just activity." },
 ];
 
-// NOTE: placeholder quotes — replace with real feedback before launch.
-export const TESTIMONIALS = [
-// Client testimonials
+// Client testimonials — real feedback.
 export const TESTIMONIALS = [
   {
     quote:
       "The team provided professional digital marketing support and helped us strengthen our online presence. Their communication and approach throughout the process were excellent.",
     name: "Access Con Solar",
-    Services: "Digital Marketing",
+    service: "Digital Marketing",
     city: "Bokaro",
   },
   {
     quote:
       "We had a great experience working with the team for our digital marketing requirements. They understood our goals and provided consistent support to improve our online presence.",
     name: "MHA Shopping Pvt. Ltd.",
-    Services: "Digital Marketing",
+    service: "Digital Marketing",
     city: "Ranchi",
   },
   {
     quote:
       "The team understood our business requirements and provided focused digital marketing support. We appreciated their professionalism and consistent communication.",
     name: "Interior Designer Hub",
-    Services: "Digital Marketing",
+    service: "Digital Marketing",
     city: "Bokaro",
   },
   {
     quote:
       "The team provided professional digital marketing services and helped us maintain a stronger online presence. Their support and communication were very good.",
     name: "Eicher Tractor",
-    Services: "Digital Marketing",
+    service: "Digital Marketing",
     city: "Bokaro",
   },
   {
     quote:
       "The team understood our requirements and developed a clean and user-friendly website for us. They were supportive throughout the development process.",
     name: "Reyansha Library",
-    Services: "Digital Marketing & Web Development",
+    service: "Digital Marketing & Web Development",
     city: "Bokaro",
   },
   {
     quote:
       "We received professional digital marketing support from the team. They understood our requirements well and helped us improve our digital presence.",
     name: "Global Institute",
-    Services: "Digital Marketing",
+    service: "Digital Marketing",
     city: "Bokaro",
   },
   {
     quote:
       "The team provided dedicated digital marketing support for our coaching institute. Their communication was clear, and they worked according to our requirements.",
     name: "Abhyas Coaching",
-    Services: "Digital Marketing",
+    service: "Digital Marketing",
     city: "Bokaro",
   },
 ];
@@ -234,8 +233,28 @@ export const FAQS = [
     a: "We work with startups and existing companies on strategy, launch, sales, operations, finances and team/marketing support — with the goal of making the business profitable, starting from wherever you are.",
   },
   {
-    q: "Do you accept payments or fee collection through the website?",
-    a: "No — the website is for enquiries only. Any payment or fee discussion happens directly with our team after we've understood your requirement.",
+    q: "Can I pay online through the website?",
+    a: "Yes — the Pricing page lists starting prices with a Pay Now option for each plan. For anything outside those plans, we'll confirm the amount with you on WhatsApp before any payment.",
+  },
+  {
+    q: "What if I need a refund or want to cancel after paying?",
+    a: "See our Refund & Cancellation Policy page for details, or message us directly on WhatsApp with your payment reference.",
+  },
+  {
+    q: "Do you have an office I can visit?",
+    a: "Yes — our head office is in Bokaro, with a second office in Ranchi. Both addresses and directions are on the Contact page.",
+  },
+  {
+    q: "What are your working hours?",
+    a: "We're available Monday to Saturday, 10:00 AM to 6:00 PM. WhatsApp messages outside these hours are picked up the next working day.",
+  },
+  {
+    q: "Do you only work in Jharkhand?",
+    a: "No — while our offices are in Bokaro and Ranchi, we've worked across 60+ cities pan-India, especially for marketing and study material.",
+  },
+  {
+    q: "I'm looking for a job, not hiring — how do I apply?",
+    a: "Message us on WhatsApp with your subject, experience and preferred city. We'll match you against current openings in our network and support you through interviews.",
   },
   {
     q: "Is your main website live yet?",
