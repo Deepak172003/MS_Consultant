@@ -166,19 +166,23 @@ section { padding: 60px 0; }
    or not a real photo is set yet. */
 /* ---------- Team section ---------- */
 .team-lead {
-  display: flex; justify-content: center; margin-bottom: 32px;
+  display: flex; justify-content: center; width: 100%; margin-bottom: 32px;
 }
 .team-row {
   display: flex; flex-wrap: wrap; justify-content: center; gap: 24px;
 }
 .team-card { width: 260px; max-width: 100%; text-align: center; }
-.team-card-featured { width: 320px; }
+.team-card-featured { width: 320px; margin: 0 auto; }
 
 .team-photo {
   width: 100%; aspect-ratio: 4 / 5; object-fit: cover;
   object-position: center top;            /* keeps heads from being cut */
   border-radius: 10px; margin-bottom: 14px; display: block;
   background: rgba(27,35,64,.05);
+}
+.team-photo-featured {
+  aspect-ratio: 1 / 1;
+  object-position: 50% 15%;               /* Krishna: left/right, up/down */
 }
 .team-photo-fallback {
   display: flex; align-items: center; justify-content: center;
