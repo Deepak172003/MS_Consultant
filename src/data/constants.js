@@ -248,9 +248,10 @@ export const FAQS = [
     q: "What are your working hours?",
     a: "We're available Monday to Saturday, 10:00 AM to 6:00 PM. WhatsApp messages outside these hours are picked up the next working day.",
   },
-  {
-    q: "Do you only work in Jharkhand?",
-    a: "No — while our offices are in Bokaro and Ranchi, we've worked across 60+ cities pan-India, especially for marketing and study material.",
+  
+{
+  q: "Do you only work in Jharkhand?",
+  a: "No — while our offices are in Bokaro and Ranchi, we serve clients across 60+ cities pan-India. Our services include HR Services, Digital Marketing, Study Material & Test Software, and Business Consulting.",
   },
   {
     q: "I'm looking for a job, not hiring — how do I apply?",
