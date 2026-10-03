@@ -164,23 +164,35 @@ section { padding: 60px 0; }
 
 /* Team member photo / initials fallback — square, consistent size whether
    or not a real photo is set yet. */
+/* ---------- Team section ---------- */
+.team-lead {
+  display: flex; justify-content: center; margin-bottom: 32px;
+}
+.team-row {
+  display: flex; flex-wrap: wrap; justify-content: center; gap: 24px;
+}
+.team-card { width: 260px; max-width: 100%; text-align: center; }
+.team-card-featured { width: 320px; }
+
 .team-photo {
-  width: 100%; aspect-ratio: 1 / 1; object-fit: cover;
+  width: 100%; aspect-ratio: 4 / 5; object-fit: cover;
+  object-position: center top;            /* keeps heads from being cut */
   border-radius: 10px; margin-bottom: 14px; display: block;
   background: rgba(27,35,64,.05);
 }
 .team-photo-fallback {
   display: flex; align-items: center; justify-content: center;
-  font-family: 'Sora', sans-serif; font-weight: 800; font-size: 1.8rem;
+  font-family: 'Sora', sans-serif; font-weight: 800; font-size: 2.4rem;
   color: var(--accent2); background: rgba(76,140,232,.10);
   border: 1px solid var(--line);
 }
 
-.chip-list { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0; }
-.chip-list li {
-  background: rgba(27,35,64,.05); border: 1px solid var(--line);
-  padding: 6px 12px; border-radius: 100px; font-size: .82rem; color: var(--sub);
+.linkedin-btn {
+  display: inline-flex; margin-top: 10px; padding: 7px 14px;
+  background: #0077b5; color: #fff; border-radius: 8px;
+  font-size: .85rem; font-weight: 600; transition: transform .2s ease, box-shadow .2s ease;
 }
+.linkedin-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 18px rgba(0,119,181,.35); }
 .dash-list { list-style: none; font-size: .88rem; color: var(--sub); margin: 12px 0; }
 .dash-list li { padding: 3px 0; padding-left: 16px; position: relative; }
 .dash-list li::before { content: "—"; position: absolute; left: 0; color: var(--accent2); }
