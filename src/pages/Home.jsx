@@ -188,7 +188,7 @@ export default function Home() {
                 <p className="quote">&ldquo;{t.quote}&rdquo;</p>
                 <div className="quote-author">
                   <strong>{t.name}</strong>
-                  <span className="muted">{t.role}</span>
+                  <span className="muted">{t.service} · {t.city}</span>
                 </div>
               </div>
             ))}
