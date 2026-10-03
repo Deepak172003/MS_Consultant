@@ -92,6 +92,15 @@ export default function Home() {
               <Link className="btn btn-ghost" to="/marketing">
                 Marketing
               </Link>
+              <a
+                className="btn btn-ghost"
+                href="https://whatsapp.com/channel/0029Va7CtqtAO7RDRpB4Ei1b"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Join our WhatsApp channel"
+              >
+                Join Now
+              </a>
             </div>
           </div>
 
