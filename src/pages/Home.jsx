@@ -208,7 +208,7 @@ export default function Home() {
         <div className="wrap">
           <div className="join-band">
             <h2>Get updates on our WhatsApp channel</h2>
-            <p>Offers, admissions and placement news — straight to your phone.</p>
+            <p>Join our WhatsApp channel for the latest updates on faculty vacancies, job openings opportunities. — straight to your phone.</p>
             <a
               className="join-btn"
               href="https://whatsapp.com/channel/0029Va7CtqtAO7RDRpB4Ei1b"
