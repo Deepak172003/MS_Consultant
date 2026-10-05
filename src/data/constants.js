@@ -395,7 +395,6 @@ export const PRICING_PLANS = [
     price: "₹5,000",
     tagline: "A smart starting point for your business needs.",
     features: [
-      " Play School Franchise — Basic franchise consultation & guidance ",
       " Study Material & Test Software — Basic study material / test setup ",
       " Marketing — Basic social media,marketing support & Website Designing",
       "HR Services — Basic recruitment support",
@@ -409,7 +408,6 @@ export const PRICING_PLANS = [
     price: "₹10,000",
     tagline: "Enhanced support for growing your business with confidence.",
     features: [
-      " Play School Franchise — Complete setup & franchise guidance",
       " Study Material & Test Software — Customized material & test solution",
       " Marketing — SEO + social media + marketing support + Website Designing",
       " HR Services — Complete recruitment assistance",
@@ -423,7 +421,6 @@ export const PRICING_PLANS = [
     price: "₹20,000",
     tagline: "Complete solutions for businesses ready to grow and scale.",
     features: [
-      " Play School Franchise — End-to-end franchise support",
       " Study Material & Test Software — Advanced test & learning solution ",
       " Marketing — Complete digital marketing & lead generation ",
       " HR Services — End-to-end HR & recruitment support",
