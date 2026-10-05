@@ -113,7 +113,6 @@ export const HR_SERVICE_STREAMS = [
   { name: "NEET Faculty", desc: "Physics, Chemistry, Biology faculty" },
   { name: "Board Level Faculty", desc: "11th & 12th subject faculty" },
   { name: "Foundation Faculty", desc: "Classes 8th to 10th" },
-  { name: "Digital Marketing Faculty", desc: "Specialists in digital marketing strategies" },
 ];
 
 // Business Consulting — "zero se profitable". Service list is a sensible
