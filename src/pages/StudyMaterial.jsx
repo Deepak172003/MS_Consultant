@@ -1,6 +1,6 @@
+import { Link } from "react-router-dom";
 import WhatsAppCTA from "../components/WhatsAppCTA";
-import EnquiryForm from "../components/EnquiryForm";
-import { STUDY_MATERIAL_STREAMS, COMPANY_NAME, STUDY_MATERIAL_ENQUIRY_FIELDS } from "../data/constants";
+import { STUDY_MATERIAL_STREAMS, COMPANY_NAME } from "../data/constants";
 
 export default function StudyMaterial() {
   return (
@@ -22,13 +22,18 @@ export default function StudyMaterial() {
 
       <section>
         <div className="wrap">
-          <EnquiryForm
-            title="Study Material Request"
-            note="Tell us your stream and requirement — our team will share the right material and pricing."
-            fields={STUDY_MATERIAL_ENQUIRY_FIELDS}
-            formName="Study Material — Request"
-            whatsappMessage="Hi, I'd like to request study material / test software."
-          />
+          <div className="panel-card enquiry-cta">
+            <h2>Study Material Request</h2>
+            <p className="muted">Fill out a short form with your stream and requirement — our team will share the right material and pricing.</p>
+            <Link
+              to="/enquiry/study-material"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-primary"
+            >
+              Open Requirement Form →
+            </Link>
+          </div>
         </div>
       </section>
 
