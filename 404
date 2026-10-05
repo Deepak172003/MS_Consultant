@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>MS Consultant</title>
+    <!-- GitHub Pages SPA fix: GitHub Pages serves this file for any URL
+         it doesn't recognize as a real file (e.g. a direct/new-tab load
+         of /MS_Consultant/enquiry/hr-services). Instead of showing a dead
+         end, it encodes that path into a query string and redirects to
+         index.html, which decodes it back (see the script in index.html)
+         so React Router can render the right page. -->
+    <script type="text/javascript">
+      var pathSegmentsToKeep = 1; // keeps "/MS_Consultant" from the base path
+      var l = window.location;
+      l.replace(
+        l.protocol +
+          "//" +
+          l.hostname +
+          (l.port ? ":" + l.port : "") +
+          l.pathname.split("/").slice(0, 1 + pathSegmentsToKeep).join("/") +
+          "/?/" +
+          l.pathname.slice(1).split("/").slice(pathSegmentsToKeep).join("/").replace(/&/g, "~and~") +
+          (l.search ? "&" + l.search.slice(1).replace(/&/g, "~and~") : "") +
+          l.hash
+      );
+    </script>
+  </head>
+  <body></body>
+</html>
