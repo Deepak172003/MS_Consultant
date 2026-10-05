@@ -9,7 +9,7 @@ export default function RefundPolicy() {
           <div className="eyebrow">Legal</div>
           <h1>Refund & Cancellation Policy</h1>
           <p className="muted">
-           Effective Date: 5 October 2026
+          <p> Effective Date: 5 October 2026</p>
 At MS Consultant, we aim to provide clear information about our services, pricing, payments, cancellations, and refunds. This Refund & Cancellation Policy explains the terms applicable to payments made for our services.
           </p>
         </div>
