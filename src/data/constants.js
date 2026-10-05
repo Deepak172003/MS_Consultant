@@ -6,9 +6,9 @@ export const COMPANY_FULL_NAME = "MS Consultant Pvt. Ltd.";
 export const TAGLINE = "A Ms Consultant company built around five things brands, institutes and families actually need.";
 
 export const WHATSAPP_NUMBER = "917004237947"; // country code + number, no + or spaces
-export const OFFICE_PHONE = "+91 9431768823";
-export const MOBILE_PHONES = ["+91 70042 37947", "+91 70047 04332"];
-export const EMAIL = "info@mscjobs.in";
+export const OFFICE_PHONE = "+91 7004704332";
+export const MOBILE_PHONES = ["+91 70042 37947", "+91 9431768823"];
+export const EMAIL = "msconsultant111@gmail.com";
 export const ADDRESS = "2nd Floor, Golden Palace, Bye Pass Road, Chas, Bokaro (JH)";
 export const OPENING_HOURS = "Mon–Sat, 10:00 AM – 6:00 PM"; // TODO: confirm real hours
 
