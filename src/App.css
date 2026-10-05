@@ -267,15 +267,8 @@ section { padding: 60px 0; }
 }
 .contact-form select:focus { outline: none; border-color: var(--accent2); }
 .radio-row { display: flex; flex-wrap: wrap; gap: 10px 20px; padding: 6px 0 2px; }
-/* ".contact-form label" (class+element, further down the file) otherwise
-   wins this tie too and forces display:block, same cascade issue as the
-   input rule above. */
-.contact-form .radio-option { display: flex; align-items: center; gap: 7px; font-size: .9rem; color: var(--text); margin: 0; }
-/* Higher specificity than ".contact-form input" on purpose — otherwise that
-   rule's width:100% wins the cascade tie (equal specificity, later in file)
-   and stretches the radio/checkbox to fill the row, pushing its label text
-   onto the next line. */
-.contact-form .radio-option input { width: 15px; height: 15px; flex: none; accent-color: var(--accent2); }
+.radio-option { display: flex; align-items: center; gap: 7px; font-size: .9rem; color: var(--text); margin: 0; }
+.radio-option input { width: 15px; height: 15px; accent-color: var(--accent2); }
 .form-error { color: #C24444; font-size: .85rem; margin-top: 10px; }
 .contact-form button:disabled { opacity: .6; cursor: not-allowed; transform: none; }
 .form-whatsapp-fallback { border-top: 1px solid var(--line); margin-top: 24px; padding-top: 18px; }
@@ -329,17 +322,7 @@ section { padding: 60px 0; }
 
 /* Footer */
 .site-footer { border-top: 1px solid var(--line); padding: 36px 0 20px; }
-
-/* FIX: wider min column so the email fits on one line on large screens */
-.footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 28px; }
-
-/* FIX: lets grid columns shrink instead of overflowing into the next column */
-.footer-grid > * { min-width: 0; }
-
-/* FIX: long emails/links wrap inside their column instead of overlapping */
-.site-footer a,
-.site-footer p { overflow-wrap: anywhere; }
-
+.footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 28px; }
 .site-footer h4 { font-size: .85rem; margin-bottom: 10px; }
 .footer-links { list-style: none; display: flex; flex-direction: column; gap: 8px; }
 .footer-links a { color: var(--sub); font-size: .88rem; }
@@ -350,6 +333,14 @@ section { padding: 60px 0; }
 .footer-directions:hover { text-decoration: underline; }
 .footer-directions-pending { font-size: .8rem; }
 .copyright { margin-top: 24px; padding-top: 16px; border-top: 1px solid var(--line); font-size: .82rem; color: var(--sub); }
+
+/* WhatsApp floating button */
+.wa-float {
+  position: fixed; bottom: 22px; right: 22px; z-index: 60;
+  width: 58px; height: 58px; border-radius: 50%; background: #25D366;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 8px 20px rgba(27,35,64,.28);
+}
 
 /* Inline links inside body copy */
 .panel-card p a { color: var(--accent2); font-weight: 600; }
