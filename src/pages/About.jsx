@@ -66,7 +66,7 @@ const team = [
   {
     name: "Shivam Singh Rawat",
     role: "Digital Marketing Manager",
-    photo: "Sagar.webp",
+    photo: "New_Person.webp",
     linkedin: "https://www.linkedin.com/in/shivam-singh-rawat-30aa44118",
   },
 ];
