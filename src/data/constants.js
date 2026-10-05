@@ -278,7 +278,7 @@ export const TRUST_STRIP = [
 // TODO: replace with your real Formspree endpoint (formspree.io — free
 // account, takes 2 minutes) so form submissions actually reach an inbox.
 // Until this is a real endpoint, forms fall back to a WhatsApp button.
-export const FORM_ENDPOINT = "https://formspree.io/f/mppqzayy";
+export const FORM_ENDPOINT = "https://formspree.io/f/xnpjqaer";
 
 export const HR_ENQUIRY_FIELDS = [
   { name: "institution", label: "Institution / Organization Name", type: "text", required: true },
