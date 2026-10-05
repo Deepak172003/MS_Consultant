@@ -1,10 +1,8 @@
 import { Link } from "react-router-dom";
 import WhatsAppCTA from "../components/WhatsAppCTA";
-import EnquiryForm from "../components/EnquiryForm";
 import {
   BUSINESS_CONSULTING_SERVICES,
   BUSINESS_CONSULTING_STEPS,
-  BUSINESS_CONSULTING_ENQUIRY_FIELDS,
   COMPANY_NAME,
 } from "../data/constants";
 
@@ -30,13 +28,18 @@ export default function BusinessConsulting() {
 
       <section>
         <div className="wrap">
-          <EnquiryForm
-            title="Business Consulting Enquiry"
-            note="Tell us about your business — our team will get in touch to understand your situation and next steps."
-            fields={BUSINESS_CONSULTING_ENQUIRY_FIELDS}
-            formName="Business Consulting — Enquiry"
-            whatsappMessage="Hi, I'd like to discuss my business and how you can help."
-          />
+          <div className="panel-card enquiry-cta">
+            <h2>Business Consulting Enquiry</h2>
+            <p className="muted">Fill out a short form about your business — our team will get in touch to understand your situation.</p>
+            <Link
+              to="/enquiry/business-consulting"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-primary"
+            >
+              Open Requirement Form →
+            </Link>
+          </div>
         </div>
       </section>
 
