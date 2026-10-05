@@ -273,6 +273,16 @@ section { padding: 60px 0; }
 .contact-form button:disabled { opacity: .6; cursor: not-allowed; transform: none; }
 .form-whatsapp-fallback { border-top: 1px solid var(--line); margin-top: 24px; padding-top: 18px; }
 
+/* "Open Requirement Form" CTA card on each vertical page */
+.enquiry-cta { text-align: center; }
+.enquiry-cta h2 { font-size: 1.3rem; font-weight: 800; margin-bottom: 8px; }
+.enquiry-cta p { max-width: 50ch; margin: 0 auto 20px; }
+
+/* Standalone form page opened in a new tab via /enquiry/:type */
+.enquiry-page-wrap { max-width: 640px; padding-top: 44px; padding-bottom: 60px; }
+.enquiry-back-link { display: inline-block; font-size: .85rem; margin-bottom: 20px; }
+.enquiry-back-link:hover { color: var(--text); }
+
 /* Pricing page */
 .pricing-card { display: flex; flex-direction: column; }
 .pricing-card-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; margin-bottom: 4px; }
