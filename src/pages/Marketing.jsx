@@ -1,6 +1,6 @@
+import { Link } from "react-router-dom";
 import WhatsAppCTA from "../components/WhatsAppCTA";
-import EnquiryForm from "../components/EnquiryForm";
-import { MARKETING_SERVICES, COMPANY_NAME, MARKETING_ENQUIRY_FIELDS } from "../data/constants";
+import { MARKETING_SERVICES, COMPANY_NAME } from "../data/constants";
 
 export default function Marketing() {
   return (
@@ -21,13 +21,18 @@ export default function Marketing() {
 
       <section>
         <div className="wrap">
-          <EnquiryForm
-            title="Marketing Service Request"
-            note="Tell us about your business and what you need — our team will get back with a plan."
-            fields={MARKETING_ENQUIRY_FIELDS}
-            formName="Marketing — Service Request"
-            whatsappMessage="Hi, I'd like to discuss a marketing project."
-          />
+          <div className="panel-card enquiry-cta">
+            <h2>Marketing Service Request</h2>
+            <p className="muted">Fill out a short form about your business and what you need — our team will get back with a plan.</p>
+            <Link
+              to="/enquiry/marketing"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-primary"
+            >
+              Open Requirement Form →
+            </Link>
+          </div>
         </div>
       </section>
 
