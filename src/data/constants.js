@@ -44,7 +44,7 @@ export const VERTICALS = [
   { key: "study-material", label: "Study Material & Test Software", path: "/study-material" },
   { key: "marketing", label: "Marketing", path: "/marketing" },
   { key: "hr-services", label: "HR Services", path: "/hr-services" },
-  { key: "business-consulting", label: "Business Consulting", path: "/business-consulting" },
+  { key: "business-consulting", label: "Business Consulting / Education", path: "/business-consulting" },
 ];
 
 export const PLAY_SCHOOL_HIGHLIGHTS = [
