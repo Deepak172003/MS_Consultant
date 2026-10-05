@@ -23,7 +23,7 @@ const getPhoto = (file) => (file ? imageMap[file.toLowerCase()] : undefined);
 const team = [
   {
     name: "Krishna Kr. Barnwal",
-    role: "Founder & Chairman","Business Consulting",
+    role: ["Founder & Chairman", "Business Consulting"],
     photo: "Krishana-same.webp",
     linkedin: "https://www.linkedin.com/in/krishna-kumar-barnwal-350124193",
   },
