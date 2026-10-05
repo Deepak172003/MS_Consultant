@@ -1,6 +1,6 @@
+import { Link } from "react-router-dom";
 import WhatsAppCTA from "../components/WhatsAppCTA";
-import EnquiryForm from "../components/EnquiryForm";
-import { PLAY_SCHOOL_HIGHLIGHTS, COMPANY_NAME, PLAY_SCHOOL_ENQUIRY_FIELDS } from "../data/constants";
+import { PLAY_SCHOOL_HIGHLIGHTS, COMPANY_NAME } from "../data/constants";
 
 export default function PlaySchool() {
   return (
@@ -22,13 +22,18 @@ export default function PlaySchool() {
 
       <section>
         <div className="wrap">
-          <EnquiryForm
-            title="Play School Franchise Enquiry"
-            note="Share a few details about you and your city — our team will get in touch with the franchise details and next steps."
-            fields={PLAY_SCHOOL_ENQUIRY_FIELDS}
-            formName="Play School — Franchise Enquiry"
-            whatsappMessage="Hi, I'd like to know about the Play School franchise."
-          />
+          <div className="panel-card enquiry-cta">
+            <h2>Play School Franchise Enquiry</h2>
+            <p className="muted">Fill out a short form with your city and background — our team will share franchise details and next steps.</p>
+            <Link
+              to="/enquiry/play-school"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-primary"
+            >
+              Open Requirement Form →
+            </Link>
+          </div>
         </div>
       </section>
 
