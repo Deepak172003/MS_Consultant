@@ -9,8 +9,8 @@ export default function RefundPolicy() {
           <div className="eyebrow">Legal</div>
           <h1>Refund & Cancellation Policy</h1>
           <p className="muted">
-            This page explains how payments, cancellations and refunds are
-            handled for services booked through {COMPANY_FULL_NAME}.
+           Effective Date: 5 October 2026
+At MS Consultant, we aim to provide clear information about our services, pricing, payments, cancellations, and refunds. This Refund & Cancellation Policy explains the terms applicable to payments made for our services.
           </p>
         </div>
       </section>
