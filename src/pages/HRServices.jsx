@@ -1,6 +1,6 @@
+import { Link } from "react-router-dom";
 import WhatsAppCTA from "../components/WhatsAppCTA";
-import EnquiryForm from "../components/EnquiryForm";
-import { HR_SERVICE_STREAMS, COMPANY_NAME, HR_ENQUIRY_FIELDS } from "../data/constants";
+import { HR_SERVICE_STREAMS, COMPANY_NAME } from "../data/constants";
 
 export default function HRServices() {
   return (
@@ -44,13 +44,18 @@ export default function HRServices() {
 
       <section>
         <div className="wrap">
-          <EnquiryForm
-            title="Faculty Hiring Request"
-            note="Please fill this out to share your faculty requirement — our team will get in touch shortly with the best-matched teachers for your institute."
-            fields={HR_ENQUIRY_FIELDS}
-            formName="HR Services — Faculty Hiring Request"
-            whatsappMessage="Hi, I want to share my faculty requirement."
-          />
+          <div className="panel-card enquiry-cta">
+            <h2>Faculty Hiring Request</h2>
+            <p className="muted">Fill out a short form with your institution and the role you're hiring for — our team will share best-matched teachers.</p>
+            <Link
+              to="/enquiry/hr-services"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-primary"
+            >
+              Open Requirement Form →
+            </Link>
+          </div>
         </div>
       </section>
 
