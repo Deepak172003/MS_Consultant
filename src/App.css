@@ -267,8 +267,15 @@ section { padding: 60px 0; }
 }
 .contact-form select:focus { outline: none; border-color: var(--accent2); }
 .radio-row { display: flex; flex-wrap: wrap; gap: 10px 20px; padding: 6px 0 2px; }
-.radio-option { display: flex; align-items: center; gap: 7px; font-size: .9rem; color: var(--text); margin: 0; }
-.radio-option input { width: 15px; height: 15px; accent-color: var(--accent2); }
+/* ".contact-form label" (class+element, further down the file) otherwise
+   wins this tie too and forces display:block, same cascade issue as the
+   input rule above. */
+.contact-form .radio-option { display: flex; align-items: center; gap: 7px; font-size: .9rem; color: var(--text); margin: 0; }
+/* Higher specificity than ".contact-form input" on purpose — otherwise that
+   rule's width:100% wins the cascade tie (equal specificity, later in file)
+   and stretches the radio/checkbox to fill the row, pushing its label text
+   onto the next line. */
+.contact-form .radio-option input { width: 15px; height: 15px; flex: none; accent-color: var(--accent2); }
 .form-error { color: #C24444; font-size: .85rem; margin-top: 10px; }
 .contact-form button:disabled { opacity: .6; cursor: not-allowed; transform: none; }
 .form-whatsapp-fallback { border-top: 1px solid var(--line); margin-top: 24px; padding-top: 18px; }
