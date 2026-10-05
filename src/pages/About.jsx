@@ -20,6 +20,7 @@ const imageMap = Object.fromEntries(
 const getPhoto = (file) => (file ? imageMap[file.toLowerCase()] : undefined);
 
 // First item is the founder and is shown alone in the center.
+// `role` can be a string or an array of strings (each shown on its own line).
 const team = [
   {
     name: "Krishna Kr. Barnwal",
@@ -93,12 +94,17 @@ const [founder, ...others] = team;
 
 function TeamCard({ m, featured = false }) {
   const photo = getPhoto(m.photo);
+
+  // FIX: role can be a string OR an array, so never call .trim() on it directly.
+  const roles = (Array.isArray(m.role) ? m.role : [m.role]).map((r) => String(r).trim());
+  const roleText = roles.join(" · ");
+
   return (
     <div className={`card team-card${featured ? " team-card-featured" : ""}`}>
       {photo ? (
         <img
           src={photo}
-          alt={`${m.name}, ${m.role.trim()}`}
+          alt={`${m.name}, ${roleText}`}
           className={`team-photo${featured ? " team-photo-featured" : ""}`}
           loading="lazy"
         />
@@ -106,7 +112,11 @@ function TeamCard({ m, featured = false }) {
         <div className="team-photo team-photo-fallback">{initials(m.name)}</div>
       )}
       <h3>{m.name}</h3>
-      <p className="muted">{m.role.trim()}</p>
+      {roles.map((r) => (
+        <p className="muted" key={r}>
+          {r}
+        </p>
+      ))}
       {isValidLinkedIn(m.linkedin) && (
         <a
           href={m.linkedin}
@@ -150,7 +160,7 @@ export default function About() {
 
       <section>
         <div className="wrap grid-2x2">
-          {VERTICALS.map((v) => (
+          {(VERTICALS || []).map((v) => (
             <div className="panel-card" key={v.key}>
               <h2 style={{ fontSize: "1.2rem" }}>{v.label}</h2>
               <Link to={v.path} className="muted" style={{ fontSize: ".88rem" }}>
