@@ -2,7 +2,7 @@
 // whole site. Change something once here and every page updates.
 
 export const COMPANY_NAME = "Ms Consultant";
-export const COMPANY_FULL_NAME = "MS Consultant Pvt. Ltd.";
+export const COMPANY_FULL_NAME = "MS Consultant";
 export const TAGLINE = "A Ms Consultant company built around five things brands, institutes and families actually need.";
 
 export const WHATSAPP_NUMBER = "917004237947"; // country code + number, no + or spaces
