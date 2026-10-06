@@ -316,7 +316,7 @@ export const FACULTY_REGISTRATION_FIELDS = [
   { name: "expectedSalary", label: "Expected Salary", type: "text", required: true, placeholder: "e.g. ₹45,000 per month" },
   { name: "currentLocation", label: "Current Location", type: "text", required: true },
   { name: "relocateLocation", label: "Willing to Relocate To", type: "text", placeholder: "e.g. any city in Jharkhand, or specific cities" },
-  { name: "resume", label: "Upload Resume", type: "file", accept: ".pdf,.doc,.docx", required: true },
+  { name: "resumeLink", label: "Resume Link (Google Drive / Dropbox)", type: "url", required: true, placeholder: "Paste a shareable link to your resume" },,
 ];
 
 export const PLAY_SCHOOL_ENQUIRY_FIELDS = [
