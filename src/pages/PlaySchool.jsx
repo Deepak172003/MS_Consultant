@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import WhatsAppCTA from "../components/WhatsAppCTA";
-import { PLAY_SCHOOL_HIGHLIGHTS, COMPANY_NAME } from "../data/constants";
+import { PLAY_SCHOOL_HIGHLIGHTS, PLAY_SCHOOL_BRAND, COMPANY_NAME } from "../data/constants";
 
 export default function PlaySchool() {
   return (
@@ -16,6 +16,23 @@ export default function PlaySchool() {
           </p>
           <WhatsAppCTA message="Hi, I'd like to know about the Play School franchise.">
             Ask about the franchise on WhatsApp
+          </WhatsAppCTA>
+        </div>
+      </section>
+
+      <section>
+        <div className="wrap panel-card brand-highlight">
+          <div className="kicker">Our Brand</div>
+          <h2>{PLAY_SCHOOL_BRAND.name}</h2>
+          <p className="muted">{PLAY_SCHOOL_BRAND.tagline}</p>
+          <div className="brand-price">
+            <span className="brand-price-amount">{PLAY_SCHOOL_BRAND.startingPrice}</span>
+            <span className="brand-price-note">{PLAY_SCHOOL_BRAND.setupDetail}</span>
+          </div>
+          <WhatsAppCTA
+            message={`Hi, I'm interested in starting a ${PLAY_SCHOOL_BRAND.name} branch.`}
+          >
+            Get Started
           </WhatsAppCTA>
         </div>
       </section>
