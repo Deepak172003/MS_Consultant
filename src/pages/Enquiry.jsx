@@ -1,8 +1,8 @@
 import { useParams, Link } from "react-router-dom";
 import EnquiryForm from "../components/EnquiryForm";
+import WhatsAppCTA from "../components/WhatsAppCTA";
 import {
   HR_ENQUIRY_FIELDS,
-  FACULTY_REGISTRATION_FIELDS,
   PLAY_SCHOOL_ENQUIRY_FIELDS,
   STUDY_MATERIAL_ENQUIRY_FIELDS,
   MARKETING_ENQUIRY_FIELDS,
@@ -12,6 +12,8 @@ import {
 // One config per vertical — this is the single source of truth for each
 // form's title/note/fields now. The matching vertical page just links here
 // instead of rendering the form inline.
+// A config with `externalUrl` shows a button that opens that link (e.g. a
+// Google Form) instead of rendering <EnquiryForm />.
 const CONFIGS = {
   "hr-services": {
     title: "Faculty Hiring Request",
@@ -25,8 +27,9 @@ const CONFIGS = {
   "faculty-registration": {
     title: "Faculty Registration",
     note: "Looking for a teaching role? Share your details and resume — our team will match you with current openings.",
-    fields: FACULTY_REGISTRATION_FIELDS,
-    formName: "HR Services — Faculty Registration",
+    // Google Form (needed for resume upload).
+    externalUrl:
+      "https://docs.google.com/forms/d/e/1FAIpQLSfwmlA0CmEG6FUTASr6d-wDLHOi0ZeVO1sxr74iB-rq95ruOg/viewform",
     whatsappMessage: "Hi, I'd like to register as faculty and share my resume.",
     backTo: "/hr-services",
     backLabel: "HR Services",
@@ -71,7 +74,7 @@ const CONFIGS = {
 
 export default function Enquiry() {
   const { type } = useParams();
-  const config = CONFIGS[type];
+  const config = Object.hasOwn(CONFIGS, type) ? CONFIGS[type] : undefined;
 
   if (!config) {
     return (
@@ -93,13 +96,43 @@ export default function Enquiry() {
         <Link to={config.backTo} className="muted enquiry-back-link">
           ← Back to {config.backLabel}
         </Link>
-        <EnquiryForm
-          title={config.title}
-          note={config.note}
-          fields={config.fields}
-          formName={config.formName}
-          whatsappMessage={config.whatsappMessage}
-        />
+
+        {config.externalUrl ? (
+          <div className="panel-card enquiry-form">
+            <h2>{config.title}</h2>
+            {config.note && <p className="muted form-note-plain">{config.note}</p>}
+            <p className="muted" style={{ marginBottom: 16 }}>
+              The form opens in a new tab. You'll need to sign in with a Google
+              account to upload your resume.
+            </p>
+            <a
+              className="btn btn-primary"
+              href={config.externalUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Open Registration Form
+            </a>
+
+            <div className="form-whatsapp-fallback">
+              <p className="muted" style={{ marginBottom: 10 }}>
+                No Google account? Message us directly instead.
+              </p>
+              <WhatsAppCTA variant="ghost" message={config.whatsappMessage}>
+                WhatsApp instead
+              </WhatsAppCTA>
+            </div>
+          </div>
+        ) : (
+          <EnquiryForm
+            key={type}
+            title={config.title}
+            note={config.note}
+            fields={config.fields}
+            formName={config.formName}
+            whatsappMessage={config.whatsappMessage}
+          />
+        )}
       </div>
     </section>
   );
