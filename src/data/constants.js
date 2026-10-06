@@ -301,7 +301,6 @@ export const HR_ENQUIRY_FIELDS = [
 ];
 // For faculty/candidates applying directly (not institutes hiring) — the
 // counterpart to HR_ENQUIRY_FIELDS above.
-export const FORM_ENDPOINT = "https://formspree.io/f/xnpjqaer";
 export const FACULTY_REGISTRATION_FIELDS = [
   { name: "name", label: "Name of Faculty", type: "text", required: true },
   { name: "contactNumber", label: "Contact Number", type: "tel", required: true },
