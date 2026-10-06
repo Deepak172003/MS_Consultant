@@ -47,6 +47,16 @@ export const VERTICALS = [
   { key: "business-consulting", label: "Business Consulting / Education", path: "/business-consulting" },
 ];
 
+// Our own Play School brand — people can start a branch under this name
+// directly, separate from the general franchise-support offer below.
+export const PLAY_SCHOOL_BRAND = {
+  name: "MS Little Champs Play School",
+  tagline:
+    "Our own play school brand, ready to launch under one name — curriculum, branding and setup support included.",
+  startingPrice: "₹99,999",
+  setupDetail: "Starting setup for 40 students",
+};
+
 export const PLAY_SCHOOL_HIGHLIGHTS = [
   {
     name: "Curriculum & Setup",
@@ -247,10 +257,9 @@ export const FAQS = [
     q: "What are your working hours?",
     a: "We're available Monday to Saturday, 10:00 AM to 6:00 PM. WhatsApp messages outside these hours are picked up the next working day.",
   },
-  
-{
-  q: "Do you only work in Jharkhand?",
-  a: "No — while our offices are in Bokaro and Ranchi, we serve clients across 60+ cities pan-India. Our services include HR Services, Digital Marketing, Study Material & Test Software, and Business Consulting.",
+  {
+    q: "Do you only work in Jharkhand?",
+    a: "No — while our offices are in Bokaro and Ranchi, we serve clients across 60+ cities pan-India. Our services include HR Services, Digital Marketing, Study Material & Test Software, and Business Consulting.",
   },
   {
     q: "I'm looking for a job, not hiring — how do I apply?",
@@ -275,9 +284,6 @@ export const TRUST_STRIP = [
 // Enquiry forms — one config per vertical, rendered by EnquiryForm.jsx
 // ---------------------------------------------------------------------
 
-// TODO: replace with your real Formspree endpoint (formspree.io — free
-// account, takes 2 minutes) so form submissions actually reach an inbox.
-// Until this is a real endpoint, forms fall back to a WhatsApp button.
 export const FORM_ENDPOINT = "https://formspree.io/f/xnpjqaer";
 
 export const HR_ENQUIRY_FIELDS = [
@@ -299,6 +305,7 @@ export const HR_ENQUIRY_FIELDS = [
   { name: "accommodation", label: "Accommodation / Food Facility Available?", type: "radio", options: ["Yes", "No"] },
   { name: "notes", label: "Any Other Requirement / Notes", type: "textarea" },
 ];
+
 // For faculty/candidates applying directly (not institutes hiring) — the
 // counterpart to HR_ENQUIRY_FIELDS above.
 export const FACULTY_REGISTRATION_FIELDS = [
@@ -316,7 +323,7 @@ export const FACULTY_REGISTRATION_FIELDS = [
   { name: "expectedSalary", label: "Expected Salary", type: "text", required: true, placeholder: "e.g. ₹45,000 per month" },
   { name: "currentLocation", label: "Current Location", type: "text", required: true },
   { name: "relocateLocation", label: "Willing to Relocate To", type: "text", placeholder: "e.g. any city in Jharkhand, or specific cities" },
-  { name: "resumeLink", label: "Resume Link (Google Drive / Dropbox)", type: "url", required: true, placeholder: "Paste a shareable link to your resume" },,
+  { name: "resume", label: "Upload Resume", type: "file", accept: ".pdf,.doc,.docx", required: true },
 ];
 
 export const PLAY_SCHOOL_ENQUIRY_FIELDS = [
@@ -400,13 +407,11 @@ export const BUSINESS_CONSULTING_ENQUIRY_FIELDS = [
 // Recurring / NACH: Razorpay Dashboard → Subscriptions → create a Plan → create a Subscription → copy its link.
 export const RAZORPAY_SUBSCRIPTION_LINK = ""; // e.g. "https://rzp.io/i/xxxxxxx"
 
-// ⚠️ PLACEHOLDER PRICES — these 3 numbers (₹5,000 / ₹10,000 / ₹20,000) were
-// given as examples to fill the layout, not confirmed per-service amounts.
-// Edit price/tagline/features for each plan below as the real offer is
-// decided. "buttonId" is empty until a real Razorpay Payment Button is
-// created for that exact amount (Razorpay buttons are fixed-amount, so
-// each plan needs its own button) — until then, Pay Now falls back to
-// WhatsApp automatically, so nothing breaks or charges the wrong amount.
+// These 3 tiers power the "Pay Now" section on the Pricing page.
+// "buttonId" is empty until a real Razorpay Payment Button is created for
+// that exact amount (Razorpay buttons are fixed-amount, so each plan needs
+// its own button) — until then, Pay Now falls back to WhatsApp
+// automatically, so nothing breaks or charges the wrong amount.
 export const PRICING_PLANS = [
   {
     key: "basic",
@@ -446,66 +451,5 @@ export const PRICING_PLANS = [
       " Business Consulting — Comprehensive business consulting ",
     ],
     buttonId: "",
-  },
-];
-
-// ---------------------------------------------------------------------
-// Per-service starting price + its own Razorpay Payment Button.
-// IMPORTANT: a Razorpay Payment Button is always a FIXED amount, so each
-// service needs its own separate button created in the Razorpay Dashboard
-// (Payment Pages/Buttons → create → set that service's amount → copy the
-// Button ID) — you can't reuse one button for five different prices.
-//
-// ⚠️ startingPrice below is a PLACEHOLDER (null = "price not set yet").
-// Only 3 of the 5 prices were given (₹5,000 / ₹10,000 / ₹20,000) without
-// saying which service each belongs to — filling these in wrong would
-// mean charging someone the wrong amount, so none have been guessed.
-// Fill in startingPrice (a number, e.g. 5000) and razorpayButtonId for
-// each service below once confirmed, and the price + Pay Now button
-// appear on that service's card automatically.
-export const PRICING = [
-  { key: "play-school", startingPrice: null, razorpayButtonId: "" },
-  { key: "study-material", startingPrice: null, razorpayButtonId: "" },
-  { key: "marketing", startingPrice: null, razorpayButtonId: "" },
-  { key: "hr-services", startingPrice: null, razorpayButtonId: "" },
-  { key: "business-consulting", startingPrice: null, razorpayButtonId: "" },
-];
-
-// ---------------------------------------------------------------------
-// Pricing tiers — same 3 tiers offered under every service (per Krishna
-// Sir's instruction). Each tier needs its own Razorpay Payment Button,
-// since the amount differs. NOTE: because the price is identical across
-// all five services, each tier's button is shared across all of them —
-// a payment confirms the AMOUNT paid, not which specific service it was
-// for. If per-service tracking matters, each service/tier pair would
-// need its own button (15 total) created in the Razorpay dashboard
-// instead of just 3 — happy to switch to that if needed.
-// ---------------------------------------------------------------------
-
-export const PRICING_TIERS = [
-  {
-    key: "basic",
-    name: "Basic",
-    price: 5000,
-    // TODO: confirm what's actually included in this tier.
-    features: ["Feature details coming soon", "Feature details coming soon", "Feature details coming soon"],
-    buttonId: "", // e.g. "pl_XXXXXXXXXXXX" — Razorpay button for ₹5,000
-  },
-  {
-    key: "premium",
-    name: "Premium",
-    price: 10000,
-    featured: true,
-    // TODO: confirm what's actually included in this tier.
-    features: ["Feature details coming soon", "Feature details coming soon", "Feature details coming soon", "Feature details coming soon"],
-    buttonId: "", // e.g. "pl_XXXXXXXXXXXX" — Razorpay button for ₹10,000
-  },
-  {
-    key: "pro",
-    name: "Pro",
-    price: 20000,
-    // TODO: confirm what's actually included in this tier.
-    features: ["Feature details coming soon", "Feature details coming soon", "Feature details coming soon", "Feature details coming soon", "Feature details coming soon"],
-    buttonId: "", // e.g. "pl_XXXXXXXXXXXX" — Razorpay button for ₹20,000
   },
 ];
