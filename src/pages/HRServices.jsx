@@ -43,10 +43,10 @@ export default function HRServices() {
       </section>
 
       <section>
-        <div className="wrap">
+        <div className="wrap two-col">
           <div className="panel-card enquiry-cta">
             <h2>Faculty Hiring Request</h2>
-            <p className="muted">Fill out a short form with your institution and the role you're hiring for — our team will share best-matched teachers.</p>
+            <p className="muted">For institutes — fill out a short form with your institution and the role you're hiring for, and we'll share best-matched teachers.</p>
             <Link
               to="/enquiry/hr-services"
               target="_blank"
@@ -54,6 +54,18 @@ export default function HRServices() {
               className="btn btn-primary"
             >
               Open Requirement Form →
+            </Link>
+          </div>
+          <div className="panel-card enquiry-cta">
+            <h2>Faculty Registration</h2>
+            <p className="muted">For faculty & job seekers — share your details and resume, and we'll match you with current openings.</p>
+            <Link
+              to="/enquiry/faculty-registration"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-primary"
+            >
+              Open Registration Form →
             </Link>
           </div>
         </div>
