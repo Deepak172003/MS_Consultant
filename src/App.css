@@ -1,476 +1,196 @@
-@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap');
+import { useState } from "react";
+import WhatsAppCTA from "./WhatsAppCTA";
+import { FORM_ENDPOINT } from "../data/constants";
 
-:root {
-  --bg: #FFFBF0;
-  --panel: #FFFFFF;
-  --line: #E8E1C8;
-  --text: #1B2340;
-  --sub: #5B6178;
-  --accent: #E8B34C;
-  --accent2: #4C8CE8;
-  --radius: 14px;
-}
+// Generic requirement-form renderer, driven by a field config (see
+// constants.js — HR_ENQUIRY_FIELDS, PLAY_SCHOOL_ENQUIRY_FIELDS, etc).
+//
+// HOW SUBMISSIONS REACH YOUR EMAIL:
+// This is a static site with no backend of its own, so the form posts to
+// Formspree (https://formspree.io) — a free service that forwards form
+// submissions straight to an inbox, no server needed on our side.
+//   1. Create a free account at formspree.io
+//   2. Create a new form, and it gives you an endpoint like
+//      https://formspree.io/f/abcdwxyz
+//   3. Paste that into FORM_ENDPOINT in src/data/constants.js
+// Until that's set, submissions will fail gracefully and the visitor is
+// pointed to WhatsApp instead — so nothing is ever silently lost.
+export default function EnquiryForm({ title, note, fields, formName, whatsappMessage }) {
+  const [values, setValues] = useState({});
+  const [status, setStatus] = useState("idle"); // idle | sending | sent | error
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
-body {
-  background: var(--bg);
-  color: var(--text);
-  font-family: 'Inter', sans-serif;
-  line-height: 1.55;
-}
-h1, h2, h3, .brand { font-family: 'Sora', sans-serif; }
-a { color: inherit; text-decoration: none; }
-.wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
-.muted { color: var(--sub); }
+  const endpointConfigured = FORM_ENDPOINT && !FORM_ENDPOINT.includes("XXXXXXX");
 
-/* Header / Nav */
-.site-header {
-  position: sticky; top: 0; z-index: 50;
-  background: rgba(255, 251, 240, .88);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--line);
-}
-.navbar { display: flex; align-items: center; justify-content: space-between; padding: 14px 24px; gap: 20px; max-width: 1240px; }
-.brand { font-weight: 700; font-size: 1.05rem; letter-spacing: -.01em; display: flex; align-items: center; }
-.brand span { color: var(--accent); }
-/* Logo is yellow text, so it sits on a navy chip to stay readable on the cream theme. */
-.brand { flex: none; }
-.logo-img { height: 30px; width: auto; box-sizing: content-box; padding: 7px 14px; background: var(--text); border-radius: 8px; display: block; }
-.footer-logo { height: 28px; margin-bottom: 14px; }
-.navlinks { display: flex; gap: 16px; font-size: .86rem; color: var(--sub); flex-wrap: nowrap; white-space: nowrap; flex: 1; justify-content: center; }
-.navlinks a:hover, .navlinks a.active { color: var(--text); }
-.navbar-actions { display: flex; align-items: center; gap: 12px; flex: none; }
-.navbar-actions .btn { padding: 10px 18px; font-size: .86rem; white-space: nowrap; }
-@media (max-width: 1180px) { .navlinks { display: none; } }
-
-/* Services dropdown in the nav bar */
-.nav-dropdown { position: relative; }
-.nav-dropdown-trigger {
-  display: flex; align-items: center; gap: 5px; background: none; border: none; cursor: pointer;
-  font: inherit; color: var(--sub); padding: 4px 0; position: relative;
-}
-.nav-dropdown-trigger svg { transition: transform .2s ease; }
-.nav-dropdown-trigger[aria-expanded="true"] svg { transform: rotate(180deg); }
-.nav-dropdown-trigger:hover, .nav-dropdown-trigger.active { color: var(--text); }
-.nav-dropdown-trigger::after {
-  content: ""; position: absolute; left: 0; right: 0; bottom: -4px; height: 2px; border-radius: 2px;
-  background: var(--accent); transform: scaleX(0); transform-origin: left; transition: transform .28s ease;
-}
-.nav-dropdown-trigger:hover::after, .nav-dropdown-trigger.active::after { transform: scaleX(1); }
-.nav-dropdown-menu {
-  position: absolute; top: calc(100% + 14px); left: 50%; transform: translateX(-50%);
-  background: var(--panel); border: 1px solid var(--line); border-radius: 12px;
-  padding: 8px; min-width: 240px; box-shadow: 0 16px 40px rgba(27,35,64,.14);
-  display: flex; flex-direction: column; gap: 2px;
-  animation: dropdownIn .16s ease-out;
-}
-.nav-dropdown-menu a {
-  padding: 10px 12px; border-radius: 8px; font-size: .88rem; color: var(--text); white-space: nowrap;
-  transition: background .15s ease;
-}
-.nav-dropdown-menu a:hover, .nav-dropdown-menu a.active { background: rgba(76,140,232,.10); color: var(--accent2); }
-@keyframes dropdownIn { from { opacity: 0; transform: translateX(-50%) translateY(-6px); } to { opacity: 1; transform: translateX(-50%) translateY(0); } }
-
-/* Hamburger */
-.hamburger {
-  display: none; flex-direction: column; justify-content: center; gap: 5px;
-  width: 38px; height: 38px; border-radius: 10px; border: 1px solid var(--line);
-  background: var(--panel); cursor: pointer; padding: 0;
-}
-.hamburger span { width: 18px; height: 2px; background: var(--text); margin: 0 auto; border-radius: 2px; }
-@media (max-width: 1180px) { .hamburger { display: flex; } }
-
-/* Mobile menu panel */
-.mobile-menu {
-  border-top: 1px solid var(--line); background: var(--panel);
-  animation: slideDown .15s ease-out;
-}
-.mobile-menu .wrap { display: flex; flex-direction: column; padding: 12px 24px 20px; }
-.mobile-menu a { padding: 12px 4px; font-size: .96rem; color: var(--sub); border-bottom: 1px solid var(--line); }
-.mobile-menu a:last-child { border-bottom: none; }
-.mobile-menu a.active, .mobile-menu a:hover { color: var(--text); }
-@keyframes slideDown { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: translateY(0); } }
-
-/* Buttons */
-.btn {
-  display: inline-flex; align-items: center; gap: 8px;
-  padding: 13px 24px; border-radius: 100px; font-weight: 600; font-size: .92rem;
-  transition: transform .15s; cursor: pointer; border: none;
-}
-.btn-primary { background: var(--accent); color: #241a02; }
-.btn-ghost { border: 1px solid var(--line); color: var(--text); background: transparent; }
-.btn:hover { transform: translateY(-2px); }
-
-/* Hero */
-.hero, .page-hero { padding: 88px 0 56px; }
-.eyebrow { color: var(--accent2); font-size: .85rem; font-weight: 600; margin-bottom: 16px; }
-.hero h1, .page-hero h1, .banner h1 {
-  font-size: clamp(2rem, 5vw, 3.4rem); font-weight: 800; line-height: 1.08; letter-spacing: -.02em; max-width: 18ch;
-}
-.hero h1 em, .page-hero h1 em, .banner h1 em { font-style: normal; color: var(--accent); }
-.hero p, .page-hero p, .banner p { color: var(--sub); font-size: 1.05rem; max-width: 48ch; margin-top: 18px; }
-.hero-ctas { display: flex; gap: 12px; margin-top: 28px; flex-wrap: wrap; }
-.page-hero .btn { margin-top: 24px; }
-
-/* Home banner */
-.banner { position: relative; overflow: hidden; padding: 88px 0 64px; scroll-margin-top: 90px; }
-.banner-inner { display: grid; grid-template-columns: 1.15fr .85fr; gap: 32px; align-items: center; position: relative; z-index: 1; }
-@media (max-width: 860px) { .banner-inner { grid-template-columns: 1fr; } .banner-graphic { display: none; } }
-.banner-graphic { display: flex; justify-content: center; }
-.banner-graphic svg { width: 100%; max-width: 320px; height: auto; }
-.banner-glow { position: absolute; border-radius: 50%; pointer-events: none; filter: blur(2px); }
-.banner-glow-1 { top: -140px; right: -140px; width: 460px; height: 460px; background: radial-gradient(circle, rgba(232,179,76,.18), transparent 70%); }
-.banner-glow-2 { bottom: -160px; left: -120px; width: 380px; height: 380px; background: radial-gradient(circle, rgba(76,140,232,.16), transparent 70%); }
-
-/* Stats strip */
-.stats { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 34px 0; }
-.stat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; text-align: center; }
-@media (max-width: 640px) { .stat-grid { grid-template-columns: repeat(2, 1fr); gap: 28px 16px; } }
-.stat-grid .num { font-family: 'Sora', sans-serif; font-weight: 800; font-size: 1.9rem; color: var(--accent); }
-.stat-grid .lbl { color: var(--sub); font-size: .83rem; margin-top: 4px; }
-
-/* Trust strip */
-.trust-strip { border-bottom: 1px solid var(--line); padding: 20px 0; }
-.trust-strip-inner {
-  display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;
-  font-size: .85rem; color: var(--sub); font-weight: 600;
-}
-.trust-strip-inner span:not(:last-child)::after { content: "•"; margin-left: 10px; color: var(--line); }
-
-/* Sections */
-section { padding: 60px 0; }
-.section-head { max-width: 60ch; margin-bottom: 32px; }
-.kicker { color: var(--accent2); font-size: .82rem; font-weight: 600; margin-bottom: 8px; }
-.section-head h2 { font-size: clamp(1.5rem, 3vw, 2.1rem); font-weight: 800; }
-
-/* Grids & cards */
-.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-@media (max-width: 760px) { .two-col { grid-template-columns: 1fr; } }
-.grid-2x2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-@media (max-width: 760px) { .grid-2x2 { grid-template-columns: 1fr; } }
-/* With an odd number of cards, let the last one span the full row. */
-.grid-2x2 > :last-child:nth-child(odd) { grid-column: 1 / -1; }
-.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-@media (max-width: 900px) { .grid-3 { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 560px) { .grid-3 { grid-template-columns: 1fr; } }
-
-.card, .panel-card {
-  background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px;
-}
-.card h3 { font-size: 1.02rem; font-weight: 700; margin-bottom: 6px; }
-.card .btn { margin-top: 14px; }
-.panel-card h2 { font-size: 1.3rem; font-weight: 800; margin-bottom: 12px; }
-
-/* Team member photo / initials fallback — square, consistent size whether
-   or not a real photo is set yet. */
-/* ---------- Team section ---------- */
-.team-lead {
-  display: flex; justify-content: center; width: 100%; margin-bottom: 32px;
-}
-.team-row {
-  display: flex; flex-wrap: wrap; justify-content: center; gap: 24px;
-}
-.team-card { width: 260px; max-width: 100%; text-align: center; }
-.team-card-featured { width: 320px; margin: 0 auto; }
-
-.team-photo {
-  width: 100%; aspect-ratio: 4 / 5; object-fit: cover;
-  object-position: center top;            /* keeps heads from being cut */
-  border-radius: 10px; margin-bottom: 14px; display: block;
-  background: rgba(27,35,64,.05);
-}
-.team-photo-featured {
-  aspect-ratio: 1 / 1;
-  object-position: 50% 15%;               /* Krishna: left/right, up/down */
-}
-.team-photo-fallback {
-  display: flex; align-items: center; justify-content: center;
-  font-family: 'Sora', sans-serif; font-weight: 800; font-size: 2.4rem;
-  color: var(--accent2); background: rgba(76,140,232,.10);
-  border: 1px solid var(--line);
-}
-
-.linkedin-btn {
-  display: inline-flex; margin-top: 10px; padding: 7px 14px;
-  background: #0077b5; color: #fff; border-radius: 8px;
-  font-size: .85rem; font-weight: 600; transition: transform .2s ease, box-shadow .2s ease;
-}
-.linkedin-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 18px rgba(0,119,181,.35); }
-/* Steps */
-.step { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px; }
-.step-num { font-family: 'Sora', sans-serif; font-weight: 800; color: var(--accent2); font-size: 1.5rem; margin-bottom: 8px; }
-.step h3 { font-size: 1rem; font-weight: 700; margin-bottom: 6px; }
-
-/* CTA band */
-.cta-band {
-  background: linear-gradient(135deg, #FFF3D2, #FFFFFF); border: 1px solid var(--line);
-  border-radius: 20px; padding: 46px 36px; text-align: center;
-}
-.cta-band h2 { font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 800; margin-bottom: 10px; }
-.cta-band p { max-width: 44ch; margin: 0 auto 22px; }
-
-/* Quotes */
-.quote { font-size: 1rem; margin-bottom: 14px; }
-.quote-author { display: flex; flex-direction: column; font-size: .88rem; }
-
-/* FAQ */
-.faq-list { display: flex; flex-direction: column; gap: 10px; }
-.faq-item { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 6px 20px; }
-.faq-q {
-  width: 100%; background: none; border: none; color: var(--text); font-family: 'Sora', sans-serif;
-  font-weight: 700; font-size: .98rem; padding: 16px 0; display: flex; justify-content: space-between; cursor: pointer;
-}
-.faq-a { padding-bottom: 16px; font-size: .92rem; }
-
-/* Contact page split layout */
-.contact-split { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: start; }
-@media (max-width: 800px) { .contact-split { grid-template-columns: 1fr; } }
-.contact-info { display: flex; flex-direction: column; gap: 18px; }
-
-.info-item { display: flex; gap: 14px; align-items: flex-start; }
-.icon-badge {
-  flex: none; width: 40px; height: 40px; border-radius: 10px;
-  background: rgba(76,140,232,.12); border: 1px solid var(--line);
-  display: flex; align-items: center; justify-content: center; color: var(--accent2);
-}
-.icon-badge svg { width: 20px; height: 20px; }
-.info-label { font-size: .82rem; color: var(--sub); margin-bottom: 3px; font-weight: 600; }
-.info-value { font-size: .95rem; }
-
-.hours-card { display: flex; gap: 14px; align-items: center; }
-
-.map-card { position: relative; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
-.map-embed { width: 100%; height: 220px; border: 0; display: block; }
-.map-overlay-btn {
-  position: absolute; top: 12px; left: 12px; background: var(--panel); border: 1px solid var(--line);
-  color: var(--accent2); font-size: .82rem; font-weight: 600; padding: 8px 14px; border-radius: 8px;
-}
-.map-caption { padding: 10px 14px; font-size: .82rem; background: var(--panel); }
-
-.contact-form-card { display: flex; flex-direction: column; }
-.form-note { display: flex; align-items: center; gap: 8px; margin-bottom: 18px; font-size: .88rem; }
-.form-note svg { width: 16px; height: 16px; flex: none; }
-.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-@media (max-width: 480px) { .form-row { grid-template-columns: 1fr; } }
-.contact-form label { font-size: .82rem; color: var(--sub); margin-bottom: 4px; display: block; margin-top: 10px; }
-.contact-form label:first-child { margin-top: 0; }
-
-/* Enquiry forms (Play School, Study Material, Marketing, HR, Consulting) */
-.enquiry-form h2 { font-size: 1.3rem; font-weight: 800; margin-bottom: 6px; }
-.form-note-plain { font-size: .9rem; margin-bottom: 18px; }
-.form-field { margin-bottom: 2px; }
-.req { color: var(--accent2); margin-left: 3px; }
-.contact-form select {
-  width: 100%; background: var(--bg); border: 1px solid var(--line); border-radius: 10px;
-  padding: 12px 14px; color: var(--text); font-family: 'Inter', sans-serif; font-size: .92rem;
-}
-.contact-form select:focus { outline: none; border-color: var(--accent2); }
-.radio-row { display: flex; flex-wrap: wrap; gap: 10px 20px; padding: 6px 0 2px; }
-/* ".contact-form label" (class+element, further down the file) otherwise
-   wins this tie too and forces display:block, same cascade issue as the
-   input rule above. */
-.contact-form .radio-option { display: flex; align-items: center; gap: 7px; font-size: .9rem; color: var(--text); margin: 0; }
-/* Higher specificity than ".contact-form input" on purpose — otherwise that
-   rule's width:100% wins the cascade tie (equal specificity, later in file)
-   and stretches the radio/checkbox to fill the row, pushing its label text
-   onto the next line. */
-.contact-form .radio-option input { width: 15px; height: 15px; flex: none; accent-color: var(--accent2); }
-.form-error { color: #C24444; font-size: .85rem; margin-top: 10px; }
-.contact-form button:disabled { opacity: .6; cursor: not-allowed; transform: none; }
-.form-whatsapp-fallback { border-top: 1px solid var(--line); margin-top: 24px; padding-top: 18px; }
-
-/* "Open Requirement Form" CTA card on each vertical page */
-.enquiry-cta { text-align: center; }
-.enquiry-cta h2 { font-size: 1.3rem; font-weight: 800; margin-bottom: 8px; }
-.enquiry-cta p { max-width: 50ch; margin: 0 auto 20px; }
-
-/* Standalone form page opened in a new tab via /enquiry/:type */
-.enquiry-page-wrap { max-width: 640px; padding-top: 44px; padding-bottom: 60px; }
-.enquiry-back-link { display: inline-block; font-size: .85rem; margin-bottom: 20px; }
-.enquiry-back-link:hover { color: var(--text); }
-
-/* Pricing page */
-.pricing-card { display: flex; flex-direction: column; }
-.pricing-card-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; margin-bottom: 4px; }
-.pricing-card-top h3 { margin-bottom: 0; flex: 1; }
-.price-tag { text-align: right; flex: none; }
-.price-amount { display: block; font-family: 'Sora', sans-serif; font-weight: 800; font-size: 1.15rem; color: var(--accent); }
-.price-note { display: block; font-size: .72rem; color: var(--sub); }
-.price-tag-pending .price-note { font-size: .78rem; font-weight: 600; color: var(--sub); }
-.pricing-card-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: auto; padding-top: 16px; align-items: center; }
-.pay-now-card { text-align: center; }
-.pay-now-card h2 { margin-top: 4px; }
-.pay-now-options { display: flex; gap: 32px; justify-content: center; flex-wrap: wrap; margin-top: 20px; }
-.pay-now-options h3 { font-size: .9rem; color: var(--sub); font-weight: 600; margin-bottom: 10px; }
-.pay-now-pending { margin-top: 20px; }
-
-/* Pricing plan cards (Basic / Premium / Standard) */
-.plan-card { display: flex; flex-direction: column; }
-.plan-price {
-  font-family: 'Sora', sans-serif; font-weight: 800; font-size: 2rem; color: var(--accent);
-  margin: 6px 0 4px; display: flex; align-items: baseline; gap: 8px;
-}
-.plan-price span { font-family: 'Inter', sans-serif; font-weight: 500; font-size: .8rem; color: var(--sub); }
-.plan-tagline { margin-bottom: 14px; font-size: .88rem; }
-.plan-pay { margin-top: auto; padding-top: 16px; }
-.plan-pay .btn { width: 100%; justify-content: center; }
-
-/* Contact form */
-.contact-form { display: flex; flex-direction: column; gap: 4px; }
-.contact-form input, .contact-form textarea {
-  background: var(--bg); border: 1px solid var(--line); border-radius: 10px;
-  padding: 12px 14px; color: var(--text); font-family: 'Inter', sans-serif; font-size: .92rem; resize: vertical; width: 100%;
-}
-.contact-form input:focus, .contact-form textarea:focus { outline: none; border-color: var(--accent2); }
-.contact-form input[type="file"] {
-  padding: 10px 14px; cursor: pointer;
-}
-.contact-form input[type="file"]::file-selector-button {
-  background: var(--accent); color: #241a02; border: none; border-radius: 100px;
-  padding: 7px 14px; font-weight: 600; font-size: .82rem; margin-right: 12px; cursor: pointer;
-}
-.contact-form button { align-self: flex-start; margin-top: 14px; display: inline-flex; gap: 8px; align-items: center; }
-.contact-form button svg { width: 16px; height: 16px; }
-.btn svg { width: 16px; height: 16px; }
-
-/* Footer */
-.site-footer { border-top: 1px solid var(--line); padding: 36px 0 20px; }
-.footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 28px; }
-.site-footer h4 { font-size: .85rem; margin-bottom: 10px; }
-.footer-links { list-style: none; display: flex; flex-direction: column; gap: 8px; }
-.footer-links a { color: var(--sub); font-size: .88rem; }
-.footer-links a:hover { color: var(--text); }
-.footer-office { margin-bottom: 12px; }
-.footer-office-name { font-weight: 600; color: var(--text); font-size: .88rem; margin-bottom: 2px; }
-.footer-directions { color: var(--accent2); font-size: .82rem; }
-.footer-directions:hover { text-decoration: underline; }
-.footer-directions-pending { font-size: .8rem; }
-.copyright { margin-top: 24px; padding-top: 16px; border-top: 1px solid var(--line); font-size: .82rem; color: var(--sub); }
-
-/* WhatsApp floating button */
-.wa-float {
-  position: fixed; bottom: 22px; right: 22px; z-index: 60;
-  width: 58px; height: 58px; border-radius: 50%; background: #25D366;
-  display: flex; align-items: center; justify-content: center;
-  box-shadow: 0 8px 20px rgba(27,35,64,.28);
-}
-
-/* Inline links inside body copy */
-.panel-card p a { color: var(--accent2); font-weight: 600; }
-.panel-card p a:hover { text-decoration: underline; }
-
-/* =====================================================================
-   Animations
-   All motion is switched off for people who set "reduce motion" (bottom).
-   ===================================================================== */
-
-/* --- Page change: gentle fade on every route --- */
-.page-enter { animation: pageIn .35s ease backwards; }
-@keyframes pageIn { from { opacity: 0; } to { opacity: 1; } }
-
-/* --- Hero entrance: pieces rise in one after another --- */
-.banner-text > *, .page-hero .wrap > * {
-  animation: fadeUp .75s cubic-bezier(.2,.7,.2,1) backwards;
-}
-.banner-text > :nth-child(1), .page-hero .wrap > :nth-child(1) { animation-delay: .05s; }
-.banner-text > :nth-child(2), .page-hero .wrap > :nth-child(2) { animation-delay: .15s; }
-.banner-text > :nth-child(3), .page-hero .wrap > :nth-child(3) { animation-delay: .27s; }
-.banner-text > :nth-child(4), .page-hero .wrap > :nth-child(4) { animation-delay: .39s; }
-.banner-text > :nth-child(n+5), .page-hero .wrap > :nth-child(n+5) { animation-delay: .5s; }
-.banner-graphic { animation: fadeIn 1s .3s ease backwards; }
-@keyframes fadeUp { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: none; } }
-@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-
-/* Shimmer across the highlighted word in hero headlines */
-.banner h1 em, .page-hero h1 em {
-  background: linear-gradient(100deg, var(--accent) 0%, #F8DE9A 50%, var(--accent) 100%);
-  background-size: 200% auto;
-  -webkit-background-clip: text; background-clip: text;
-  -webkit-text-fill-color: transparent; color: transparent;
-  animation: shine 5s linear infinite;
-}
-@keyframes shine { to { background-position: 200% center; } }
-
-/* --- Banner graphic: floating cards, slow ring, drawing chart line --- */
-.float-a { animation: floatY 6s ease-in-out infinite; }
-.float-b { animation: floatY 7s ease-in-out -2.5s infinite reverse; }
-@keyframes floatY { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-9px); } }
-.ring-spin { transform-box: fill-box; transform-origin: center; animation: spin 90s linear infinite; }
-@keyframes spin { to { transform: rotate(360deg); } }
-.chart-line { stroke-dasharray: 100; stroke-dashoffset: 100; animation: drawLine 1.4s .9s ease forwards; }
-@keyframes drawLine { to { stroke-dashoffset: 0; } }
-.dot-pulse { transform-box: fill-box; transform-origin: center; animation: dotPulse 2s ease-in-out infinite; }
-@keyframes dotPulse { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.7); opacity: .55; } }
-.banner-glow-1 { animation: drift 16s ease-in-out infinite alternate; }
-.banner-glow-2 { animation: drift 20s ease-in-out infinite alternate-reverse; }
-@keyframes drift { to { transform: translate(-28px, 22px) scale(1.08); } }
-
-/* --- Scroll reveal (classes are added by RevealOnScroll.jsx) --- */
-/* `main .reveal` is deliberately more specific than `.card { transition }` below,
-   otherwise the card rule would swallow the fade and cards would just pop in. */
-main .reveal {
-  opacity: 0; transform: translateY(26px);
-  transition: opacity .6s cubic-bezier(.2,.7,.2,1), transform .6s cubic-bezier(.2,.7,.2,1);
-}
-main .reveal.is-visible { opacity: 1; transform: none; }
-
-/* --- Hover feedback --- */
-.card, .step, .grid-2x2 > .panel-card {
-  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
-}
-.card:hover, .step:hover, .grid-2x2 > .panel-card:hover {
-  transform: translateY(-5px); border-color: var(--accent);
-  box-shadow: 0 16px 32px rgba(27,35,64,.10);
-}
-.step-num { display: inline-block; transition: transform .25s ease; }
-.step:hover .step-num { transform: scale(1.15); }
-.chip-list li { transition: transform .2s ease, border-color .2s ease, color .2s ease; }
-.chip-list li:hover { transform: translateY(-2px); border-color: var(--accent2); color: var(--text); }
-
-.btn { transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease, color .2s ease; }
-.btn:hover { transform: translateY(-2px); }
-.btn:active { transform: translateY(0) scale(.97); }
-.btn-primary:hover { box-shadow: 0 10px 22px rgba(232,179,76,.5); }
-.btn-ghost:hover { border-color: var(--accent2); color: var(--accent2); }
-
-/* Nav links: underline slides in on hover / current page */
-.navlinks a { position: relative; padding: 4px 0; transition: color .2s ease; }
-.navlinks a::after {
-  content: ""; position: absolute; left: 0; right: 0; bottom: -3px; height: 2px; border-radius: 2px;
-  background: var(--accent); transform: scaleX(0); transform-origin: left; transition: transform .28s ease;
-}
-.navlinks a:hover::after, .navlinks a.active::after { transform: scaleX(1); }
-.footer-links a { display: inline-block; transition: color .2s ease, transform .2s ease; }
-.footer-links a:hover { transform: translateX(3px); }
-
-/* Header: shadow appears once you scroll */
-.site-header { transition: box-shadow .25s ease; }
-.site-header.scrolled { box-shadow: 0 8px 26px rgba(27,35,64,.08); }
-
-/* Hamburger morphs into an X */
-.hamburger span { transition: transform .25s ease, opacity .2s ease; }
-.hamburger.is-open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-.hamburger.is-open span:nth-child(2) { opacity: 0; }
-.hamburger.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
-/* FAQ answers ease open */
-.faq-a { animation: faqOpen .28s ease; }
-@keyframes faqOpen { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
-
-/* WhatsApp button: soft pulse to draw the eye */
-.wa-float::before {
-  content: ""; position: absolute; inset: 0; border-radius: 50%; background: #25D366;
-  z-index: -1; animation: waPulse 2.6s ease-out infinite;
-}
-.wa-float { transition: transform .2s ease; }
-.wa-float:hover { transform: scale(1.08); }
-@keyframes waPulse { 0% { transform: scale(1); opacity: .55; } 70%, 100% { transform: scale(1.75); opacity: 0; } }
-
-/* --- Respect "reduce motion" system setting --- */
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: .001ms !important; animation-iteration-count: 1 !important;
-    transition-duration: .001ms !important; scroll-behavior: auto !important;
+  function setField(name, val) {
+    setValues((v) => ({ ...v, [name]: val }));
   }
+
+  function toggleCheckbox(name, option) {
+    setValues((v) => {
+      const current = v[name] ? v[name].split(", ").filter(Boolean) : [];
+      const next = current.includes(option)
+        ? current.filter((o) => o !== option)
+        : [...current, option];
+      return { ...v, [name]: next.join(", ") };
+    });
+  }
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    if (!endpointConfigured) {
+      setStatus("error");
+      return;
+    }
+    setStatus("sending");
+    try {
+      const res = await fetch(FORM_ENDPOINT, {
+        method: "POST",
+        headers: { Accept: "application/json" },
+        body: (() => {
+          const fd = new FormData();
+          fd.append("_subject", `${formName} — new enquiry`);
+          fd.append("Form", formName);
+          fields.forEach((f) => {
+            const val = values[f.name];
+            if (f.type === "file") {
+              // Formspree accepts file uploads the same way a normal HTML
+              // form would (multipart/form-data) — no extra setup needed.
+              if (val) fd.append(f.label, val, val.name);
+            } else {
+              fd.append(f.label, val || "");
+            }
+          });
+          return fd;
+        })(),
+      });
+      setStatus(res.ok ? "sent" : "error");
+    } catch {
+      setStatus("error");
+    }
+  }
+
+  if (status === "sent") {
+    return (
+      <div className="panel-card enquiry-form">
+        <h2>{title}</h2>
+        <p className="muted" style={{ marginTop: 10 }}>
+          Thanks — your requirement has been sent to our team. We'll get in
+          touch shortly. For faster contact, you can also message us on
+          WhatsApp right away.
+        </p>
+        <WhatsAppCTA message={whatsappMessage}>Message us on WhatsApp</WhatsAppCTA>
+      </div>
+    );
+  }
+
+  return (
+    <div className="panel-card enquiry-form">
+      <h2>{title}</h2>
+      {note && <p className="muted form-note-plain">{note}</p>}
+
+      <form className="contact-form" onSubmit={handleSubmit}>
+        {fields.map((f) => (
+          <div key={f.name} className="form-field">
+            <label>
+              {f.label}
+              {f.required && <span className="req">*</span>}
+            </label>
+
+            {f.type === "textarea" ? (
+              <textarea
+                rows={3}
+                required={f.required}
+                value={values[f.name] || ""}
+                onChange={(e) => setField(f.name, e.target.value)}
+                placeholder={f.placeholder}
+              />
+            ) : f.type === "select" ? (
+              <select
+                required={f.required}
+                value={values[f.name] || ""}
+                onChange={(e) => setField(f.name, e.target.value)}
+              >
+                <option value="" disabled>
+                  Select…
+                </option>
+                {f.options.map((o) => (
+                  <option key={o} value={o}>
+                    {o}
+                  </option>
+                ))}
+              </select>
+            ) : f.type === "radio" ? (
+              <div className="radio-row">
+                {f.options.map((o) => (
+                  <label key={o} className="radio-option">
+                    <input
+                      type="radio"
+                      name={f.name}
+                      value={o}
+                      required={f.required}
+                      checked={values[f.name] === o}
+                      onChange={(e) => setField(f.name, e.target.value)}
+                    />
+                    {o}
+                  </label>
+                ))}
+              </div>
+            ) : f.type === "checkboxGroup" ? (
+              <div className="radio-row">
+                {f.options.map((o) => (
+                  <label key={o} className="radio-option">
+                    <input
+                      type="checkbox"
+                      checked={(values[f.name] || "").split(", ").includes(o)}
+                      onChange={() => toggleCheckbox(f.name, o)}
+                    />
+                    {o}
+                  </label>
+                ))}
+              </div>
+            ) : f.type === "file" ? (
+              // File inputs can't have a React-controlled "value" (browsers
+              // block it for security), so this one just reads the picked
+              // file on change instead of following the usual pattern.
+              <input
+                type="file"
+                required={f.required}
+                accept={f.accept}
+                onChange={(e) => setField(f.name, e.target.files[0] || null)}
+              />
+            ) : (
+              <input
+                type={f.type || "text"}
+                required={f.required}
+                value={values[f.name] || ""}
+                onChange={(e) => setField(f.name, e.target.value)}
+                placeholder={f.placeholder}
+              />
+            )}
+          </div>
+        ))}
+
+        <button type="submit" className="btn btn-primary" disabled={status === "sending"}>
+          {status === "sending" ? "Sending…" : "Submit Requirement"}
+        </button>
+
+        {status === "error" && (
+          <p className="form-error">
+            {endpointConfigured
+              ? "Something went wrong sending this — please try again, or use WhatsApp below."
+              : "Email submissions aren't connected yet — please use WhatsApp below instead."}
+          </p>
+        )}
+      </form>
+
+      <div className="form-whatsapp-fallback">
+        <p className="muted" style={{ marginBottom: 10 }}>
+          Prefer to just message us directly?
+        </p>
+        <WhatsAppCTA variant="ghost" message={whatsappMessage}>
+          WhatsApp instead
+        </WhatsAppCTA>
+      </div>
+    </div>
+  );
 }
