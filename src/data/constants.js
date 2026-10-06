@@ -299,6 +299,25 @@ export const HR_ENQUIRY_FIELDS = [
   { name: "accommodation", label: "Accommodation / Food Facility Available?", type: "radio", options: ["Yes", "No"] },
   { name: "notes", label: "Any Other Requirement / Notes", type: "textarea" },
 ];
+// For faculty/candidates applying directly (not institutes hiring) — the
+// counterpart to HR_ENQUIRY_FIELDS above.
+export const FACULTY_REGISTRATION_FIELDS = [
+  { name: "name", label: "Name of Faculty", type: "text", required: true },
+  { name: "contactNumber", label: "Contact Number", type: "tel", required: true },
+  { name: "subject", label: "Subject", type: "text", required: true, placeholder: "e.g. Physics, Chemistry, Maths" },
+  { name: "teachingLevel", label: "Teaching Level", type: "text", required: true, placeholder: "e.g. IIT-JEE, NEET, Foundation (8-10), PGT (11-12)" },
+  { name: "experience", label: "Experience", type: "text", required: true, placeholder: "e.g. 3 years" },
+  { name: "qualification", label: "Qualification", type: "text", required: true, placeholder: "e.g. M.Sc Physics, B.Ed" },
+  {
+    name: "college", label: "College", type: "select", required: true,
+    options: ["IIT", "NIT", "Government College", "Other"],
+  },
+  { name: "currentSalary", label: "Current Salary", type: "text", placeholder: "e.g. ₹35,000 per month" },
+  { name: "expectedSalary", label: "Expected Salary", type: "text", required: true, placeholder: "e.g. ₹45,000 per month" },
+  { name: "currentLocation", label: "Current Location", type: "text", required: true },
+  { name: "relocateLocation", label: "Willing to Relocate To", type: "text", placeholder: "e.g. any city in Jharkhand, or specific cities" },
+  { name: "resume", label: "Upload Resume", type: "file", accept: ".pdf,.doc,.docx", required: true },
+];
 
 export const PLAY_SCHOOL_ENQUIRY_FIELDS = [
   { name: "applicantName", label: "Your Name", type: "text", required: true },
