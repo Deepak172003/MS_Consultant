@@ -337,6 +337,11 @@ section { padding: 60px 0; }
 /* Footer */
 .site-footer { border-top: 1px solid var(--line); padding: 36px 0 20px; }
 .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 28px; }
+/* Grid items don't shrink below their content's natural width by default,
+   so a long unbroken string (like an email address) pushes past its own
+   column into the next one instead of wrapping. These two rules fix that. */
+.footer-grid > div { min-width: 0; }
+.footer-grid p, .footer-grid a { overflow-wrap: break-word; word-break: break-word; }
 .site-footer h4 { font-size: .85rem; margin-bottom: 10px; }
 .footer-links { list-style: none; display: flex; flex-direction: column; gap: 8px; }
 .footer-links a { color: var(--sub); font-size: .88rem; }
