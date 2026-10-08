@@ -1,11 +1,11 @@
 # MSC  — edtech company site
 
 One React website, one WhatsApp number, five verticals:
-- **Play School Franchise** — curriculum, teacher training, admissions & marketing support
+- **Play School Franchise** — Curriculum, teacher training, admissions & marketing support
 - **Study Material & Test Software** — IIT-JEE, NEET, Board, Foundation, Higher Studies, Olympiad/NDA
 - **Marketing** — Graphics Design, Photography, Videography, Video Editing, Ads Management, Web/App Development (online & offline)
-- **HR Services** — faculty & staff placements, pan-India
-- **Business Consulting** — taking startups and existing companies from zero to profitable
+- **HR Services** — Faculty & staff placements, pan-India
+- **Business Consulting/Eduction** — Taking startups and existing companies from zero to profitable
 
 Every CTA on every page opens WhatsApp with a prefilled message. No contact forms that submit anywhere, no payment/fee collection on the site — enquiry only, by design.
 
@@ -37,8 +37,8 @@ Then build for production with `npm run build` (outputs to `dist/`), and deploy 
 ## Things to edit before you launch
 
 1. **`src/data/constants.js`** — WhatsApp number, phone numbers, email, addresses, opening hours, and all five verticals' content live here in one place. Change something once and every page that uses it updates.
-2. **`src/pages/Testimonials.jsx`** (and the Home page teaser) — currently placeholder quotes. Swap in real feedback.
-3. **Opening hours** — still a placeholder in `constants.js` (`OPENING_HOURS`).
+2. **`src/pages/Testimonials.jsx`** (and the Home page teaser) — Currently placeholder quotes. Swap in real feedback.
+3. **Opening hours** — Still a placeholder in `constants.js` (`OPENING_HOURS`).
 4. **Colors** — CSS variables at the top of `src/App.css` (`--accent`, `--accent2`, `--bg`, etc.) if you want to match an existing brand palette.
 
 ## Notes
